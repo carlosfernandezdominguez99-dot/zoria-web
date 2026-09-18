@@ -1,14 +1,9 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { drawLine, fadeUp, stagger } from "@/lib/motion";
-
-const chips = [
-  { label: "Web", top: "8%", left: "4%", delay: 0.9 },
-  { label: "Instagram", top: "58%", left: "-2%", delay: 1.05 },
-  { label: "Reparación", top: "78%", left: "30%", delay: 1.2 },
-];
+import { fadeUp, stagger } from "@/lib/motion";
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -115,69 +110,23 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* ── columna derecha: Z gráfica + composición ────────────── */}
+        {/* ── columna derecha: la Z de marca, protagonista ────────── */}
         <div className="relative hidden h-[560px] lg:block" aria-hidden="true">
-          <motion.svg
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
             style={{ y: zY, opacity: zOpacity }}
-            viewBox="0 0 420 520"
-            className="absolute -right-24 -top-8 h-[640px] w-[640px] max-w-none"
-            fill="none"
+            className="absolute -right-16 -top-6 h-[620px] w-[620px]"
           >
-            <motion.path
-              d="M90 70 H330 L120 450 H340"
-              stroke="url(#zGradient)"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              variants={drawLine}
-              initial="hidden"
-              animate="show"
+            <Image
+              src="/logo.png"
+              alt=""
+              fill
+              priority
+              className="object-contain drop-shadow-[0_0_60px_rgba(22,224,189,0.15)]"
             />
-            <motion.path
-              d="M90 70 H330 L120 450 H340"
-              stroke="white"
-              strokeOpacity="0.05"
-              strokeWidth="34"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              variants={drawLine}
-              initial="hidden"
-              animate="show"
-            />
-            <defs>
-              <linearGradient id="zGradient" x1="90" y1="70" x2="340" y2="450" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#6FF3DC" />
-                <stop offset="100%" stopColor="#16E0BD" />
-              </linearGradient>
-            </defs>
-          </motion.svg>
-
-          {chips.map((c, i) => (
-            <motion.div
-              key={c.label}
-              initial={{ opacity: 0, y: 14, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: c.delay, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute"
-              style={{ top: c.top, left: c.left }}
-            >
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{
-                  duration: 4 + i,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: i * 0.4,
-                }}
-                className="flex items-center gap-2 rounded-xl border border-white/10 bg-graphite-900/80 px-3.5 py-2.5 shadow-card backdrop-blur"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-zoria-blueLight" />
-                <span className="text-xs font-medium text-graphite-100">
-                  {c.label}
-                </span>
-              </motion.div>
-            </motion.div>
-          ))}
+          </motion.div>
         </div>
       </div>
 
