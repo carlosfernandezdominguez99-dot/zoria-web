@@ -34,17 +34,17 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-4">
           <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-3">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl border-2 border-graphite-950 bg-graphite-950 p-2 shadow-[4px_4px_0_0_rgba(22,224,189,0.6)]">
-                <ZoriaLogo className="h-full w-full" />
-              </span>
-              <span className="text-2xl font-black leading-none tracking-tight text-graphite-950">
-                ZORIA
-              </span>
-            </div>
-            <span className="max-w-[220px] text-sm font-medium text-graphite-950/55">
-              Soluciones digitales de principio a fin.
+            <span className="flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-graphite-950 bg-graphite-950 p-3">
+              <ZoriaLogo className="h-full w-full" />
             </span>
+            <div>
+              <p className="text-2xl font-black leading-none tracking-tight text-graphite-950">
+                ZORIA
+              </p>
+              <p className="mt-2 max-w-[220px] text-sm font-medium text-graphite-950/55">
+                Soluciones digitales de principio a fin.
+              </p>
+            </div>
           </div>
           {columnas.map((c) => (
             <div key={c.titulo}>
