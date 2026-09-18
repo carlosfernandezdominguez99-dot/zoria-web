@@ -2,23 +2,61 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 import { fadeUp, stagger } from "@/lib/motion";
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  const zY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const zOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.25]);
+  const zY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const zOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.35]);
+  const zScale = useTransform(scrollYProgress, [0, 1], [1, 1.04]);
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+
+  // reacción muy sutil al puntero (paralaje de marca, no un efecto 3D)
+  const px = useMotionValue(0);
+  const py = useMotionValue(0);
+  const rotateX = useSpring(useTransform(py, [-1, 1], [2.2, -2.2]), {
+    stiffness: 60,
+    damping: 18,
+  });
+  const rotateY = useSpring(useTransform(px, [-1, 1], [-2.2, 2.2]), {
+    stiffness: 60,
+    damping: 18,
+  });
+  const tiltX = useSpring(useTransform(px, [-1, 1], [-6, 6]), {
+    stiffness: 60,
+    damping: 20,
+  });
+  const tiltY = useSpring(useTransform(py, [-1, 1], [-6, 6]), {
+    stiffness: 60,
+    damping: 20,
+  });
+
+  function handlePointerMove(e: React.PointerEvent<HTMLDivElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    px.set(((e.clientX - rect.left) / rect.width) * 2 - 1);
+    py.set(((e.clientY - rect.top) / rect.height) * 2 - 1);
+  }
+
+  function handlePointerLeave() {
+    px.set(0);
+    py.set(0);
+  }
 
   return (
     <section
-      ref={ref}
+      ref={sectionRef}
       id="top"
       className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-graphite-950 pt-24"
     >
@@ -35,7 +73,7 @@ export default function Hero() {
           }}
         />
         <div
-          className="absolute right-[-10%] top-[10%] h-[520px] w-[520px] rounded-full bg-zoria-blue/[0.08] blur-[140px]"
+          className="absolute right-[-6%] top-[6%] h-[560px] w-[560px] rounded-full bg-zoria-blue/[0.07] blur-[150px]"
           aria-hidden="true"
         />
         <div
@@ -110,21 +148,74 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* ── columna derecha: la Z de marca, protagonista ────────── */}
-        <div className="relative hidden h-[560px] lg:block" aria-hidden="true">
+        {/* ── columna derecha: la Z, integrada en el sistema visual ── */}
+        <div
+          className="relative hidden h-[560px] [perspective:1200px] lg:block"
+          onPointerMove={handlePointerMove}
+          onPointerLeave={handlePointerLeave}
+          aria-hidden="true"
+        >
+          {/* líneas técnicas que "conectan" con la marca */}
+          <motion.span
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            style={{ originX: 0 }}
+            className="absolute left-0 top-[14%] h-px w-16 bg-zoria-blue/40"
+          />
+          <motion.span
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+            style={{ originX: 0 }}
+            className="absolute left-0 bottom-[18%] h-px w-10 bg-white/10"
+          />
+
           <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-            style={{ y: zY, opacity: zOpacity }}
+            style={{
+              y: zY,
+              scale: zScale,
+              rotateX,
+              rotateY,
+              transformStyle: "preserve-3d",
+            }}
             className="absolute -right-16 -top-6 h-[620px] w-[620px]"
           >
-            <Image
-              src="/logo.png"
-              alt=""
-              fill
-              priority
-              className="object-contain drop-shadow-[0_0_60px_rgba(22,224,189,0.15)]"
+            {/* halo ambiental, detrás — no sobre — el logo */}
+            <div
+              className="absolute inset-[12%] rounded-full bg-zoria-blue/[0.10] blur-[90px]"
+              aria-hidden="true"
+            />
+
+            {/* revelado tipo "construcción": máscara que se abre */}
+            <motion.div
+              initial={{ clipPath: "inset(0 0 100% 0)" }}
+              animate={{ clipPath: "inset(0 0 0% 0)" }}
+              transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
+              style={{ x: tiltX, y: tiltY }}
+              className="relative h-full w-full"
+            >
+              <Image
+                src="/logo.png"
+                alt="Zoria"
+                fill
+                priority
+                quality={100}
+                sizes="(min-width: 1024px) 620px, 0px"
+                className="object-contain"
+              />
+            </motion.div>
+
+            {/* rejilla local, ligeramente superpuesta a la marca */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.15] mix-blend-overlay"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)",
+                backgroundSize: "56px 56px",
+                maskImage:
+                  "radial-gradient(ellipse 60% 50% at 50% 45%, black 0%, transparent 70%)",
+              }}
             />
           </motion.div>
         </div>
