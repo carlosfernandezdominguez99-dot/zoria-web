@@ -27,7 +27,7 @@ const SITE_URL = "https://zoria.es";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Zoria — Reparación, webs y redes sociales",
+    default: "Zoria - Soluciones Digitales",
     template: "%s — Zoria",
   },
   description:
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     "Zoria",
   ],
   openGraph: {
-    title: "Zoria — Reparación, webs y redes sociales",
+    title: "Zoria - Soluciones Digitales",
     description:
       "Reparamos tus dispositivos, creamos tu presencia digital y hacemos que tu negocio avance.",
     url: SITE_URL,
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zoria — Reparación, webs y redes sociales",
+    title: "Zoria - Soluciones Digitales",
     description:
       "Reparamos tus dispositivos, creamos tu presencia digital y hacemos que tu negocio avance.",
   },

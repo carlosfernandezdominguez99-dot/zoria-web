@@ -11,6 +11,7 @@ import Local from "@/components/Local";
 import CtaFinal from "@/components/CtaFinal";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+import CookieBanner from "@/components/CookieBanner";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       <CtaFinal />
       <Footer />
       <FloatingActions />
+      <CookieBanner />
     </main>
   );
 }
