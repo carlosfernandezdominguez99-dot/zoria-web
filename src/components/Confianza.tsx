@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeUp, stagger, viewport } from "@/lib/motion";
+import { fadeUp, viewport } from "@/lib/motion";
 
 const mensajes = [
   "Atención cercana.",
@@ -12,23 +12,22 @@ const mensajes = [
 
 export default function Confianza() {
   return (
-    <section className="bg-graphite-950 py-24">
+    <section className="border-t border-white/[0.06] bg-graphite-950 py-20">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
-          variants={stagger(0.08)}
+          variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          className="flex flex-wrap items-baseline gap-x-3 gap-y-2 text-balance text-xl font-medium tracking-tight text-graphite-100 sm:text-2xl"
         >
-          {mensajes.map((m) => (
-            <motion.div
-              key={m}
-              variants={fadeUp}
-              className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6"
-            >
-              <p className="text-[15px] font-medium text-graphite-100">{m}</p>
-            </motion.div>
+          {mensajes.map((m, i) => (
+            <span key={m} className="flex items-baseline gap-3">
+              <span>{m}</span>
+              {i < mensajes.length - 1 && (
+                <span className="text-zoria-blueLight/50">·</span>
+              )}
+            </span>
           ))}
         </motion.div>
       </div>

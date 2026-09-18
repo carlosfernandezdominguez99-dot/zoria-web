@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeUp, scaleIn, stagger, viewport } from "@/lib/motion";
+import { fadeUp, scaleIn, viewport } from "@/lib/motion";
 
 const items = [
   "Web corporativa",
@@ -13,7 +13,7 @@ const items = [
 
 export default function Web() {
   return (
-    <section id="web" className="relative overflow-hidden bg-graphite-950 py-28">
+    <section id="web" className="border-t border-white/[0.06] bg-graphite-950 py-28">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-16 md:grid-cols-2 md:items-center">
           <motion.div
@@ -23,30 +23,54 @@ export default function Web() {
             viewport={viewport}
             className="order-2 md:order-1"
           >
-            <div className="relative rounded-2xl border border-white/[0.08] bg-graphite-900 p-3 shadow-card">
-              <div className="flex items-center gap-1.5 px-2 pb-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-                <div className="ml-3 h-5 flex-1 rounded-full bg-white/[0.04]" />
+            <div className="overflow-hidden rounded-xl border border-white/[0.08] bg-graphite-900">
+              <div className="flex items-center gap-2 border-b border-white/[0.06] px-4 py-3">
+                <span className="h-2 w-2 rounded-full bg-white/15" />
+                <span className="h-2 w-2 rounded-full bg-white/15" />
+                <span className="h-2 w-2 rounded-full bg-white/15" />
+                <div className="ml-2 flex h-5 flex-1 items-center rounded bg-white/[0.04] px-2">
+                  <span className="font-mono text-[10px] text-graphite-400">
+                    tunegocio.es
+                  </span>
+                </div>
               </div>
-              <div className="overflow-hidden rounded-xl bg-gradient-to-br from-graphite-800 to-graphite-950 p-6">
-                <div className="h-2.5 w-24 rounded-full bg-zoria-blue/60" />
-                <div className="mt-4 h-4 w-3/4 rounded-full bg-white/10" />
-                <div className="mt-2.5 h-4 w-1/2 rounded-full bg-white/10" />
-                <div className="mt-6 grid grid-cols-3 gap-3">
+              <div className="p-7">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold tracking-tight text-white">
+                    Tu Negocio
+                  </span>
+                  <div className="flex gap-3">
+                    <span className="h-1.5 w-6 rounded-full bg-white/10" />
+                    <span className="h-1.5 w-6 rounded-full bg-white/10" />
+                  </div>
+                </div>
+
+                <div className="mt-8 h-3 w-4/5 rounded-full bg-white/[0.14]" />
+                <div className="mt-3 h-3 w-3/5 rounded-full bg-white/[0.14]" />
+                <div className="mt-4 h-2.5 w-2/5 rounded-full bg-white/[0.06]" />
+
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "auto" }}
+                  viewport={viewport}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="mt-7 inline-flex items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full bg-zoria-blue px-4 py-2 text-[11px] font-semibold text-graphite-950"
+                >
+                  Reservar ahora
+                </motion.div>
+
+                <div className="mt-8 grid grid-cols-3 gap-2.5">
                   {[0, 1, 2].map((i) => (
                     <motion.div
                       key={i}
-                      initial={{ opacity: 0, y: 12 }}
+                      initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={viewport}
-                      transition={{ delay: 0.15 * i, duration: 0.5 }}
-                      className="h-16 rounded-lg border border-white/[0.06] bg-white/[0.03]"
+                      transition={{ delay: 0.1 * i, duration: 0.5 }}
+                      className="aspect-[4/3] rounded-md border border-white/[0.06] bg-white/[0.03]"
                     />
                   ))}
                 </div>
-                <div className="mt-6 h-9 w-32 rounded-full bg-zoria-blue" />
               </div>
             </div>
           </motion.div>
@@ -58,9 +82,7 @@ export default function Web() {
             viewport={viewport}
             className="order-1 md:order-2"
           >
-            <p className="text-sm font-medium text-zoria-blueLight">
-              Web y servicios digitales
-            </p>
+            <span className="font-mono text-xs text-graphite-400">02</span>
             <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               Tu negocio también
               <br /> merece una buena web.
@@ -70,28 +92,18 @@ export default function Web() {
               una web corporativa hasta una tienda online completa.
             </p>
 
-            <motion.ul
-              variants={stagger(0.06)}
-              initial="hidden"
-              whileInView="show"
-              viewport={viewport}
-              className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3"
-            >
+            <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3">
               {items.map((i) => (
-                <motion.li
-                  key={i}
-                  variants={fadeUp}
-                  className="flex items-center gap-2 text-sm text-graphite-100"
-                >
+                <li key={i} className="flex items-center gap-2 text-sm text-graphite-100">
                   <span className="h-1 w-1 rounded-full bg-zoria-blueLight" />
                   {i}
-                </motion.li>
+                </li>
               ))}
-            </motion.ul>
+            </ul>
 
             <a
               href="#contacto"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-zoria-blue px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition-transform duration-400 hover:-translate-y-0.5"
+              className="mt-10 inline-flex items-center gap-2 rounded-full bg-zoria-blue px-6 py-3.5 text-sm font-semibold text-graphite-950 shadow-glow transition-transform duration-400 hover:-translate-y-0.5"
             >
               Quiero una web →
             </a>

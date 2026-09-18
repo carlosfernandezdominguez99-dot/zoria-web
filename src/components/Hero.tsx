@@ -93,7 +93,7 @@ export default function Hero() {
         >
           <motion.p
             variants={fadeUp}
-            className="mb-6 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-graphite-400"
+            className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-graphite-400"
           >
             <span className="h-px w-8 bg-zoria-blue" />
             Zoria — Servicios digitales

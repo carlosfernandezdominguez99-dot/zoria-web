@@ -31,7 +31,7 @@ export default function Navbar() {
           ZORIA
         </a>
 
-        <nav className="hidden items-center gap-8 text-sm text-graphite-400 md:flex">
+        <nav className="hidden items-center gap-8 font-mono text-xs uppercase tracking-wide text-graphite-400 md:flex">
           {links.map((l) => (
             <a
               key={l.href}

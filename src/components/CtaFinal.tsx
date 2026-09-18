@@ -6,7 +6,7 @@ import ContactForm from "./ContactForm";
 
 export default function CtaFinal() {
   return (
-    <section id="contacto" className="relative overflow-hidden bg-graphite-950 py-28">
+    <section id="contacto" className="relative overflow-hidden border-t border-white/[0.06] bg-graphite-950 py-28">
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-zoria-blue/15 blur-[140px]"
         aria-hidden="true"

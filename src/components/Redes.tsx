@@ -1,35 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeUp, stagger, viewport } from "@/lib/motion";
-import {
-  IconReel,
-  IconPost,
-  IconStory,
-  IconMusic,
-  IconChart,
-  IconChat,
-} from "./icons";
+import { fadeUp, viewport } from "@/lib/motion";
 
 const conceptos = ["Contenido", "Estrategia", "Edición", "Publicación", "Crecimiento"];
 
-const cards = [
-  { Icono: IconReel, label: "Reel" },
-  { Icono: IconPost, label: "Post" },
-  { Icono: IconStory, label: "Story" },
-  { Icono: IconMusic, label: "TikTok" },
-  { Icono: IconChart, label: "Estadísticas" },
-  { Icono: IconChat, label: "Interacción" },
+const posts = [
+  { tag: "Reel", h: "h-24" },
+  { tag: "Post", h: "h-32" },
+  { tag: "Story", h: "h-20" },
 ];
 
 export default function Redes() {
   return (
-    <section id="redes" className="relative overflow-hidden bg-graphite-900 py-28">
-      <div
-        className="pointer-events-none absolute left-0 bottom-0 h-[420px] w-[420px] rounded-full bg-zoria-blue/10 blur-[120px]"
-        aria-hidden="true"
-      />
-      <div className="relative mx-auto max-w-6xl px-6">
+    <section id="redes" className="border-t border-white/[0.06] bg-graphite-900 py-28">
+      <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-16 md:grid-cols-2 md:items-center">
           <motion.div
             variants={fadeUp}
@@ -37,9 +22,7 @@ export default function Redes() {
             whileInView="show"
             viewport={viewport}
           >
-            <p className="text-sm font-medium text-zoria-blueLight">
-              Redes sociales
-            </p>
+            <span className="font-mono text-xs text-graphite-400">03</span>
             <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               Que te vean.
               <br /> Que te recuerden.
@@ -49,53 +32,55 @@ export default function Redes() {
               para que tu negocio tenga presencia constante.
             </p>
 
-            <motion.div
-              variants={stagger(0.06)}
-              initial="hidden"
-              whileInView="show"
-              viewport={viewport}
-              className="mt-8 flex flex-wrap gap-2"
-            >
-              {conceptos.map((c) => (
-                <motion.span
-                  key={c}
-                  variants={fadeUp}
-                  className="rounded-full border border-white/[0.08] bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-graphite-100"
-                >
+            <div className="mt-8 flex flex-wrap gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-wide text-graphite-400">
+              {conceptos.map((c, i) => (
+                <span key={c} className="flex items-center gap-4">
                   {c}
-                </motion.span>
+                  {i < conceptos.length - 1 && (
+                    <span className="text-graphite-600">/</span>
+                  )}
+                </span>
               ))}
-            </motion.div>
+            </div>
 
             <a
               href="#contacto"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-graphite-950 transition-all duration-400 hover:-translate-y-0.5 hover:bg-zoria-blue hover:text-white"
+              className="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors duration-400 hover:text-zoria-blueLight"
             >
               Potenciar mis redes →
             </a>
           </motion.div>
 
           <motion.div
-            variants={stagger(0.08)}
+            variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={viewport}
-            className="grid grid-cols-3 gap-3"
+            className="mx-auto w-full max-w-[240px]"
           >
-            {cards.map((c, i) => (
-              <motion.div
-                key={c.label}
-                variants={fadeUp}
-                className={`flex aspect-square flex-col items-center justify-center gap-2 rounded-2xl border border-white/[0.08] bg-gradient-to-br from-graphite-800 to-graphite-950 transition-transform duration-400 hover:-translate-y-1 hover:border-zoria-blue/40 ${
-                  i === 1 || i === 4 ? "translate-y-4" : ""
-                }`}
-              >
-                <c.Icono className="h-6 w-6 text-zoria-blueLight" />
-                <span className="text-[11px] font-medium text-graphite-400">
-                  {c.label}
-                </span>
-              </motion.div>
-            ))}
+            <div className="rounded-[2rem] border border-white/[0.08] bg-graphite-950 p-2.5 shadow-card">
+              <div className="flex items-center justify-between px-2 pb-2 pt-1">
+                <span className="h-1.5 w-10 rounded-full bg-white/10" />
+                <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
+              </div>
+              <div className="space-y-2.5 rounded-[1.5rem] bg-graphite-900 p-3">
+                {posts.map((p, i) => (
+                  <motion.div
+                    key={p.tag}
+                    initial={{ opacity: 0, x: 16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={viewport}
+                    transition={{ delay: 0.12 * i, duration: 0.5 }}
+                    className={`relative ${p.h} overflow-hidden rounded-xl border border-white/[0.06] bg-gradient-to-br from-graphite-800 to-graphite-950`}
+                  >
+                    <span className="absolute bottom-2 left-2.5 font-mono text-[10px] uppercase tracking-wide text-graphite-400">
+                      {p.tag}
+                    </span>
+                    <span className="absolute right-2.5 top-2.5 h-1.5 w-1.5 rounded-full bg-zoria-blueLight/70" />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

@@ -14,7 +14,7 @@ const TIKTOK_URL = "";
 
 export default function Local() {
   return (
-    <section className="bg-graphite-900 py-28">
+    <section className="border-t border-white/[0.06] bg-graphite-900 py-28">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-12 md:grid-cols-2">
           <motion.div
@@ -43,13 +43,13 @@ export default function Local() {
             className="grid gap-3"
           >
             <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5">
-              <p className="text-xs font-medium text-graphite-400">Ubicación</p>
+              <p className="font-mono text-xs uppercase tracking-wide text-graphite-400">Ubicación</p>
               <p className="mt-1 text-[15px] font-medium text-white">
                 {DIRECCION}
               </p>
             </div>
             <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5">
-              <p className="text-xs font-medium text-graphite-400">Horario</p>
+              <p className="font-mono text-xs uppercase tracking-wide text-graphite-400">Horario</p>
               <p className="mt-1 text-[15px] font-medium text-white">
                 {HORARIO}
               </p>
