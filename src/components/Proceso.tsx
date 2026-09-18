@@ -12,7 +12,7 @@ const pasos = [
 
 export default function Proceso() {
   return (
-    <section className="relative bg-graphite-900 py-28">
+    <section id="proceso" className="relative bg-graphite-900 py-28">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           variants={fadeUp}

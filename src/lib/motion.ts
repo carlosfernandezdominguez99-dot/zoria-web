@@ -33,3 +33,12 @@ export const scaleIn: Variants = {
 };
 
 export const viewport = { once: true, margin: "-80px" };
+
+export const drawLine: Variants = {
+  hidden: { pathLength: 0, opacity: 0 },
+  show: {
+    pathLength: 1,
+    opacity: 1,
+    transition: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
+  },
+};
