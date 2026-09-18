@@ -66,7 +66,7 @@ export default function Hero() {
           initial="hidden"
           animate="show"
           transition={{ delay: 0.3 }}
-          className="relative hidden h-[440px] w-full lg:block"
+          className="relative hidden h-[360px] w-full lg:block"
         >
           <span
             className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-graphite-950/5 blur-3xl"
@@ -120,7 +120,7 @@ export default function Hero() {
               y: { delay: 1.1, duration: 5, repeat: Infinity, ease: "easeInOut" },
             }}
             whileHover={{ rotate: 0 }}
-            className="absolute right-2 top-10 w-[270px] rounded-2xl border-2 border-graphite-950 bg-graphite-950 p-4 shadow-[9px_9px_0_0_rgba(10,13,18,0.35)]"
+            className="absolute right-2 top-6 w-[270px] rounded-2xl border-2 border-graphite-950 bg-graphite-950 p-4 shadow-[9px_9px_0_0_rgba(10,13,18,0.35)]"
           >
             <span className="absolute -right-4 -top-5 flex h-14 w-14 rotate-[10deg] items-center justify-center rounded-full border-2 border-graphite-950 bg-zoria-blue font-hand text-base font-bold text-graphite-950 shadow-[3px_3px_0_0_rgba(10,13,18,0.9)]">
               ¡en serio!
@@ -147,7 +147,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0, rotate: 8 }}
             transition={{ delay: 0.75, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ rotate: 4, y: -6 }}
-            className="absolute bottom-6 right-16 w-[184px] rounded-2xl border-2 border-graphite-950 bg-white p-4 shadow-[7px_7px_0_0_rgba(10,13,18,0.85)]"
+            className="absolute bottom-8 right-28 w-[184px] rounded-2xl border-2 border-graphite-950 bg-white p-4 shadow-[7px_7px_0_0_rgba(10,13,18,0.85)]"
           >
             <div className="flex items-center justify-between">
               <IconPhone className="h-6 w-6 text-graphite-950" />
