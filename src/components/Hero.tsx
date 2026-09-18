@@ -2,7 +2,31 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/motion";
-import { IconPhone, IconChart } from "./icons";
+import { IconPhone, IconDesktop, IconChart } from "./icons";
+
+const pilares = [
+  {
+    numero: "01",
+    titulo: "Repara",
+    texto: "Móviles y ordenadores",
+    Icono: IconPhone,
+    dark: true,
+  },
+  {
+    numero: "02",
+    titulo: "Crea",
+    texto: "Webs y aplicaciones",
+    Icono: IconDesktop,
+    dark: false,
+  },
+  {
+    numero: "03",
+    titulo: "Crece",
+    texto: "Redes y contenido",
+    Icono: IconChart,
+    dark: true,
+  },
+];
 
 export default function Hero() {
   return (
@@ -58,105 +82,113 @@ export default function Hero() {
               Ver cómo trabajamos
             </a>
           </motion.div>
+
+          {/* Tira de pilares para tablet / móvil: mismo concepto que el poster de escritorio, en formato compacto */}
+          <motion.div
+            variants={fadeUp}
+            className="mt-12 grid grid-cols-3 gap-3 lg:hidden"
+          >
+            {pilares.map((p) => (
+              <div
+                key={p.titulo}
+                className={`rounded-2xl border-2 border-graphite-950 p-3.5 shadow-[4px_4px_0_0_rgba(10,13,18,0.9)] sm:p-4 ${
+                  p.dark ? "bg-graphite-950" : "bg-white"
+                }`}
+              >
+                <p.Icono
+                  className={`h-5 w-5 sm:h-6 sm:w-6 ${p.dark ? "text-zoria-blueLight" : "text-graphite-950"}`}
+                />
+                <p
+                  className={`mt-3 text-sm font-black leading-tight sm:text-base ${p.dark ? "text-white" : "text-graphite-950"}`}
+                >
+                  {p.titulo}
+                </p>
+                <p
+                  className={`mt-0.5 hidden text-[11px] leading-snug sm:block ${p.dark ? "text-white/50" : "text-graphite-950/50"}`}
+                >
+                  {p.texto}
+                </p>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
 
-        {/* Composición visual: pila de tarjetas ancladas a la derecha, con línea de conexión */}
+        {/* Composición visual de escritorio: los tres pilares como bloques gráficos en pinwheel */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="show"
           transition={{ delay: 0.3 }}
-          className="relative hidden h-[360px] w-full lg:block"
+          className="relative hidden h-[400px] w-full lg:block"
         >
           <span
             className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-graphite-950/5 blur-3xl"
             aria-hidden="true"
           />
 
-          {/* Chip flotante superior, conectado por línea */}
+          {/* Bloque central: Crea */}
           <motion.div
-            initial={{ opacity: 0, y: -12, rotate: 4 }}
-            animate={{ opacity: 1, y: 0, rotate: 3 }}
-            transition={{ delay: 0.55, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ rotate: 0, y: -3 }}
-            className="absolute left-2 top-2 flex w-[172px] items-center gap-3 rounded-2xl border-2 border-graphite-950 bg-graphite-950 p-3.5 shadow-[6px_6px_0_0_rgba(10,13,18,0.3)]"
+            initial={{ opacity: 0, scale: 0.9, rotate: 0 }}
+            animate={{ opacity: 1, scale: 1, rotate: -3 }}
+            transition={{ delay: 0.45, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ rotate: 0, scale: 1.02 }}
+            className="absolute left-1/2 top-[104px] w-[230px] -translate-x-1/2 rounded-[28px] border-2 border-graphite-950 bg-white p-6 shadow-[10px_10px_0_0_rgba(10,13,18,0.9)]"
           >
-            <IconChart className="h-5 w-5 shrink-0 text-zoria-blue" />
-            <p className="text-xs font-black leading-tight text-white">
-              Más visibilidad
-              <br />
-              <span className="font-mono text-[9px] font-normal text-white/40">
-                redes · contenido
+            <div className="flex items-start justify-between">
+              <IconDesktop className="h-8 w-8 text-graphite-950" />
+              <span className="font-mono text-[10px] font-bold text-graphite-950/40">
+                02
               </span>
+            </div>
+            <p className="mt-5 text-2xl font-black leading-none text-graphite-950">
+              Crea
+            </p>
+            <p className="mt-1.5 text-xs font-medium text-graphite-950/60">
+              Webs y aplicaciones
+            </p>
+
+            <span className="absolute -right-5 -top-6 flex h-14 w-14 rotate-[10deg] items-center justify-center rounded-full border-2 border-graphite-950 bg-zoria-blue font-hand text-base font-bold text-graphite-950 shadow-[3px_3px_0_0_rgba(10,13,18,0.9)]">
+              ¡en serio!
+            </span>
+          </motion.div>
+
+          {/* Bloque: Repara, asoma arriba-izquierda */}
+          <motion.div
+            initial={{ opacity: 0, x: -24, y: -12, rotate: 4 }}
+            animate={{ opacity: 1, x: 0, y: 0, rotate: 8 }}
+            transition={{ delay: 0.65, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ rotate: 4, y: -6 }}
+            className="absolute -left-4 top-0 w-[168px] rounded-[24px] border-2 border-graphite-950 bg-graphite-950 p-5 shadow-[8px_8px_0_0_rgba(10,13,18,0.35)]"
+          >
+            <div className="flex items-start justify-between">
+              <IconPhone className="h-6 w-6 text-zoria-blueLight" />
+              <span className="font-mono text-[10px] font-bold text-white/40">01</span>
+            </div>
+            <p className="mt-4 text-lg font-black leading-none text-white">
+              Repara
+            </p>
+            <p className="mt-1 text-[11px] font-medium text-white/50">
+              Móviles y ordenadores
             </p>
           </motion.div>
 
-          {/* Línea discontinua conectora */}
-          <svg
-            className="pointer-events-none absolute left-[86px] top-[70px] h-[110px] w-[90px]"
-            viewBox="0 0 90 110"
-            fill="none"
-            aria-hidden="true"
-          >
-            <motion.path
-              d="M4 4 C 4 60, 60 40, 82 100"
-              stroke="#0A0D12"
-              strokeWidth="2"
-              strokeDasharray="1 8"
-              strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 0.35 }}
-              transition={{ delay: 0.9, duration: 0.9, ease: "easeOut" }}
-            />
-          </svg>
-
-          {/* Tarjeta principal: mockup tipo web, con badge rotulador clavado en la esquina */}
+          {/* Bloque: Crece, asoma abajo-derecha */}
           <motion.div
-            initial={{ opacity: 0, y: 24, rotate: -5 }}
-            animate={{ opacity: 1, y: [0, -8, 0], rotate: -3 }}
-            transition={{
-              opacity: { delay: 0.45, duration: 0.6 },
-              rotate: { delay: 0.45, duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-              y: { delay: 1.1, duration: 5, repeat: Infinity, ease: "easeInOut" },
-            }}
-            whileHover={{ rotate: 0 }}
-            className="absolute right-2 top-6 w-[270px] rounded-2xl border-2 border-graphite-950 bg-graphite-950 p-4 shadow-[9px_9px_0_0_rgba(10,13,18,0.35)]"
+            initial={{ opacity: 0, x: 24, y: 12, rotate: -4 }}
+            animate={{ opacity: 1, x: 0, y: 0, rotate: -9 }}
+            transition={{ delay: 0.8, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ rotate: -4, y: -6 }}
+            className="absolute bottom-0 right-0 w-[168px] rounded-[24px] border-2 border-graphite-950 bg-graphite-950 p-5 shadow-[8px_8px_0_0_rgba(10,13,18,0.35)]"
           >
-            <span className="absolute -right-4 -top-5 flex h-14 w-14 rotate-[10deg] items-center justify-center rounded-full border-2 border-graphite-950 bg-zoria-blue font-hand text-base font-bold text-graphite-950 shadow-[3px_3px_0_0_rgba(10,13,18,0.9)]">
-              ¡en serio!
-            </span>
-
-            <div className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
-              <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
-              <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
-              <span className="ml-1.5 font-mono text-[9px] text-white/40">
-                tunegocio.es
-              </span>
+            <div className="flex items-start justify-between">
+              <IconChart className="h-6 w-6 text-zoria-blueLight" />
+              <span className="font-mono text-[10px] font-bold text-white/40">03</span>
             </div>
-            <div className="mt-4 h-2.5 w-4/5 rounded-full bg-white/[0.16]" />
-            <div className="mt-2 h-2.5 w-3/5 rounded-full bg-white/[0.16]" />
-            <div className="mt-4 inline-flex items-center rounded-full bg-zoria-blue px-3 py-1.5 font-mono text-[9px] font-bold text-graphite-950">
-              Reservar ahora
-            </div>
-          </motion.div>
-
-          {/* Tarjeta apilada: reparación, semi-oculta bajo la principal */}
-          <motion.div
-            initial={{ opacity: 0, y: 16, rotate: 10 }}
-            animate={{ opacity: 1, y: 0, rotate: 8 }}
-            transition={{ delay: 0.75, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ rotate: 4, y: -6 }}
-            className="absolute bottom-8 right-28 w-[184px] rounded-2xl border-2 border-graphite-950 bg-white p-4 shadow-[7px_7px_0_0_rgba(10,13,18,0.85)]"
-          >
-            <div className="flex items-center justify-between">
-              <IconPhone className="h-6 w-6 text-graphite-950" />
-              <span className="font-mono text-[10px] text-graphite-950/40">01</span>
-            </div>
-            <p className="mt-3 text-sm font-black leading-tight text-graphite-950">
-              Reparación
-              <br />
-              en el día
+            <p className="mt-4 text-lg font-black leading-none text-white">
+              Crece
+            </p>
+            <p className="mt-1 text-[11px] font-medium text-white/50">
+              Redes y contenido
             </p>
           </motion.div>
         </motion.div>
