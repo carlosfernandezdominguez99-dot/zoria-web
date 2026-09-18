@@ -2,13 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/motion";
 
 export default function Hero() {
@@ -18,41 +12,9 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const zY = useTransform(scrollYProgress, [0, 1], [0, 60]);
-  const zOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.35]);
-  const zScale = useTransform(scrollYProgress, [0, 1], [1, 1.04]);
+  const zY = useTransform(scrollYProgress, [0, 1], [0, 50]);
+  const zOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.4]);
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 40]);
-
-  // reacción muy sutil al puntero (paralaje de marca, no un efecto 3D)
-  const px = useMotionValue(0);
-  const py = useMotionValue(0);
-  const rotateX = useSpring(useTransform(py, [-1, 1], [2.2, -2.2]), {
-    stiffness: 60,
-    damping: 18,
-  });
-  const rotateY = useSpring(useTransform(px, [-1, 1], [-2.2, 2.2]), {
-    stiffness: 60,
-    damping: 18,
-  });
-  const tiltX = useSpring(useTransform(px, [-1, 1], [-6, 6]), {
-    stiffness: 60,
-    damping: 20,
-  });
-  const tiltY = useSpring(useTransform(py, [-1, 1], [-6, 6]), {
-    stiffness: 60,
-    damping: 20,
-  });
-
-  function handlePointerMove(e: React.PointerEvent<HTMLDivElement>) {
-    const rect = e.currentTarget.getBoundingClientRect();
-    px.set(((e.clientX - rect.left) / rect.width) * 2 - 1);
-    py.set(((e.clientY - rect.top) / rect.height) * 2 - 1);
-  }
-
-  function handlePointerLeave() {
-    px.set(0);
-    py.set(0);
-  }
 
   return (
     <section
@@ -82,7 +44,33 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative mx-auto grid w-full max-w-6xl flex-1 items-center gap-10 px-6 lg:grid-cols-[1.05fr,0.95fr]">
+      {/* marca en marca de agua, detrás de todo */}
+      <motion.div
+        style={{ y: zY, opacity: zOpacity }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+        className="pointer-events-none absolute -right-24 top-1/2 hidden h-[720px] w-[720px] -translate-y-1/2 lg:block"
+        aria-hidden="true"
+      >
+        <Image
+          src="/logo.png"
+          alt=""
+          fill
+          priority
+          quality={100}
+          sizes="720px"
+          className="object-contain opacity-[0.16]"
+          style={{
+            maskImage:
+              "linear-gradient(120deg, black 30%, transparent 78%)",
+            WebkitMaskImage:
+              "linear-gradient(120deg, black 30%, transparent 78%)",
+          }}
+        />
+      </motion.div>
+
+      <div className="relative mx-auto grid w-full max-w-6xl flex-1 items-center gap-10 px-6 lg:grid-cols-[1.1fr,0.9fr]">
         {/* ── columna izquierda: mensaje ──────────────────────────── */}
         <motion.div
           variants={stagger(0.12)}
@@ -146,85 +134,24 @@ export default function Hero() {
               </span>
             </a>
           </motion.div>
-        </motion.div>
-
-        {/* ── columna derecha: la Z, integrada en el sistema visual ── */}
-        <div
-          className="relative hidden h-[560px] [perspective:1200px] lg:block"
-          onPointerMove={handlePointerMove}
-          onPointerLeave={handlePointerLeave}
-          aria-hidden="true"
-        >
-          {/* líneas técnicas que "conectan" con la marca */}
-          <motion.span
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-            style={{ originX: 0 }}
-            className="absolute left-0 top-[14%] h-px w-16 bg-zoria-blue/40"
-          />
-          <motion.span
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-            style={{ originX: 0 }}
-            className="absolute left-0 bottom-[18%] h-px w-10 bg-white/10"
-          />
 
           <motion.div
-            style={{
-              y: zY,
-              scale: zScale,
-              rotateX,
-              rotateY,
-              transformStyle: "preserve-3d",
-            }}
-            className="absolute -right-16 -top-6 h-[620px] w-[620px]"
+            variants={fadeUp}
+            className="mt-16 flex items-center gap-6 border-t border-white/[0.06] pt-6 font-mono text-xs text-graphite-400"
           >
-            {/* halo ambiental, detrás — no sobre — el logo */}
-            <div
-              className="absolute inset-[12%] rounded-full bg-zoria-blue/[0.10] blur-[90px]"
-              aria-hidden="true"
-            />
-
-            {/* revelado tipo "construcción": máscara que se abre */}
-            <motion.div
-              initial={{ clipPath: "inset(0 0 100% 0)" }}
-              animate={{ clipPath: "inset(0 0 0% 0)" }}
-              transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
-              style={{ x: tiltX, y: tiltY }}
-              className="relative h-full w-full"
-            >
-              <Image
-                src="/logo.png"
-                alt="Zoria"
-                fill
-                priority
-                quality={100}
-                sizes="(min-width: 1024px) 620px, 0px"
-                className="object-contain"
-              />
-            </motion.div>
-
-            {/* rejilla local, ligeramente superpuesta a la marca */}
-            <div
-              className="pointer-events-none absolute inset-0 opacity-[0.15] mix-blend-overlay"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)",
-                backgroundSize: "56px 56px",
-                maskImage:
-                  "radial-gradient(ellipse 60% 50% at 50% 45%, black 0%, transparent 70%)",
-              }}
-            />
+            <span>01 Repara</span>
+            <span className="text-graphite-600">/</span>
+            <span>02 Crea</span>
+            <span className="text-graphite-600">/</span>
+            <span>03 Crece</span>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.3, duration: 0.8 }}
+        transition={{ delay: 1.1, duration: 0.8 }}
         className="relative mx-auto mb-8 hidden sm:block"
       >
         <div className="flex h-9 w-6 items-start justify-center rounded-full border border-white/15 p-1.5">
