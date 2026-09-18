@@ -19,10 +19,11 @@ export default function CtaFinal() {
           viewport={viewport}
           className="text-center"
         >
-          <p className="font-mono text-xs uppercase tracking-wide text-zoria-blueLight">
+          <span className="inline-flex items-center gap-2 rounded-full border-2 border-zoria-blue bg-zoria-blue/10 px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-wide text-zoria-blueLight">
+            <span className="h-1.5 w-1.5 rounded-full bg-zoria-blue" />
             Atención rápida y personalizada
-          </p>
-          <h2 className="mt-3 text-balance text-4xl font-black tracking-tight text-white sm:text-5xl">
+          </span>
+          <h2 className="mt-5 text-balance text-4xl font-black tracking-tight text-white sm:text-5xl">
             ¿Qué podemos hacer por ti?
           </h2>
           <p className="mt-4 text-balance text-graphite-400">

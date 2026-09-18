@@ -9,7 +9,7 @@ export default function Diferencial() {
   return (
     <section className="relative overflow-hidden border-t-2 border-graphite-950 bg-zoria-blue py-32">
       <span
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap font-mono text-[22vw] font-medium text-graphite-950/[0.06] sm:text-[14vw]"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap font-black tracking-tight text-[22vw] text-graphite-950/[0.07] sm:text-[14vw]"
         aria-hidden="true"
       >
         ZORIA
@@ -31,9 +31,9 @@ export default function Diferencial() {
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="mt-6 text-balance text-2xl font-black leading-snug tracking-tight text-graphite-950 sm:text-4xl"
+          className="mt-6 text-balance text-2xl font-black uppercase leading-snug tracking-tight text-graphite-950 sm:text-4xl"
         >
-          Zoria no es otra tienda de informática.
+          No somos otra tienda de informática.
         </motion.p>
 
         <motion.p
@@ -66,7 +66,9 @@ export default function Diferencial() {
             >
               {p}
               {i < pasos.length - 1 && (
-                <span className="text-graphite-950/30">→</span>
+                <span className={i === 1 ? "text-white/40" : "text-graphite-950/30"}>
+                  →
+                </span>
               )}
             </motion.span>
           ))}
