@@ -19,7 +19,7 @@ export default function Proceso() {
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+          className="text-balance text-3xl font-black tracking-tight text-white sm:text-4xl"
         >
           Sencillo, de principio a fin.
         </motion.h2>

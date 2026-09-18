@@ -23,7 +23,7 @@ export default function Redes() {
             viewport={viewport}
           >
             <span className="font-mono text-xs text-graphite-400">03</span>
-            <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="mt-3 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
               Que te vean.
               <br /> Que te recuerden.
             </h2>
@@ -45,7 +45,7 @@ export default function Redes() {
 
             <a
               href="#contacto"
-              className="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors duration-400 hover:text-zoria-blueLight"
+              className="mt-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-white underline decoration-zoria-blue decoration-2 underline-offset-4 transition-colors duration-200 hover:text-zoria-blueLight"
             >
               Potenciar mis redes →
             </a>

@@ -19,7 +19,7 @@ export default function CtaFinal() {
           viewport={viewport}
           className="text-center"
         >
-          <h2 className="text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h2 className="text-balance text-4xl font-black tracking-tight text-white sm:text-5xl">
             ¿Qué podemos hacer por ti?
           </h2>
           <p className="mt-4 text-balance text-graphite-400">

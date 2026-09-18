@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 const links = [
   { href: "#reparaciones", label: "Reparaciones" },
   { href: "#web", label: "Web" },
@@ -9,34 +7,19 @@ const links = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-400 ${
-        scrolled
-          ? "border-b border-white/[0.06] bg-graphite-950/80 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
-      }`}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-graphite-950/10 bg-zoria-blue/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="text-[15px] font-semibold tracking-tight text-white">
+        <a href="#top" className="text-[15px] font-black tracking-tight text-graphite-950">
           ZORIA
         </a>
 
-        <nav className="hidden items-center gap-8 font-mono text-xs uppercase tracking-wide text-graphite-400 md:flex">
+        <nav className="hidden items-center gap-8 font-mono text-xs font-bold uppercase tracking-wide text-graphite-950/70 md:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="relative py-1 transition-colors hover:text-white"
+              className="relative py-1 transition-colors hover:text-graphite-950"
             >
               {l.label}
             </a>
@@ -45,12 +28,9 @@ export default function Navbar() {
 
         <a
           href="#contacto"
-          className="group inline-flex items-center gap-1.5 rounded-full bg-zoria-blue px-4 py-2 text-sm font-semibold text-graphite-950 transition-all duration-400 hover:shadow-glow"
+          className="inline-flex items-center gap-1.5 rounded-full border-2 border-graphite-950 bg-graphite-950 px-4 py-2 text-sm font-bold uppercase tracking-wide text-white transition-transform duration-200 hover:-translate-y-0.5"
         >
           Hablamos
-          <span className="transition-transform duration-400 group-hover:translate-x-0.5">
-            →
-          </span>
         </a>
       </div>
     </header>

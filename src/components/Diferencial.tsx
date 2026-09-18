@@ -35,7 +35,7 @@ export default function Diferencial() {
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="mt-5 text-balance text-2xl font-semibold leading-snug tracking-tight text-graphite-950 sm:text-4xl"
+          className="mt-5 text-balance text-2xl font-black leading-snug tracking-tight text-graphite-950 sm:text-4xl"
         >
           Zoria no es otra tienda de informática.
         </motion.p>

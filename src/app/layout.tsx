@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Caveat } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -13,6 +13,13 @@ const mono = JetBrains_Mono({
   variable: "--font-mono",
   display: "swap",
   weight: ["400", "500"],
+});
+
+const hand = Caveat({
+  subsets: ["latin"],
+  variable: "--font-hand",
+  display: "swap",
+  weight: ["600", "700"],
 });
 
 const SITE_URL = "https://zoria.es";
@@ -71,7 +78,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${mono.variable}`}>
+    <html lang="es" className={`${inter.variable} ${mono.variable} ${hand.variable}`}>
       <body className="bg-graphite-950 font-sans text-graphite-100 antialiased">
         {children}
         <script

@@ -83,7 +83,7 @@ export default function Web() {
             className="order-1 md:order-2"
           >
             <span className="font-mono text-xs text-graphite-400">02</span>
-            <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="mt-3 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
               Tu negocio también
               <br /> merece una buena web.
             </h2>
@@ -103,7 +103,7 @@ export default function Web() {
 
             <a
               href="#contacto"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-zoria-blue px-6 py-3.5 text-sm font-semibold text-graphite-950 shadow-glow transition-transform duration-400 hover:-translate-y-0.5"
+              className="mt-10 inline-flex items-center gap-2 rounded-full border-2 border-zoria-blue bg-zoria-blue px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-graphite-950 shadow-[5px_5px_0_0_rgba(22,224,189,0.35)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_rgba(22,224,189,0.35)]"
             >
               Quiero una web →
             </a>

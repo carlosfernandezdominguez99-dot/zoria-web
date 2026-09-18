@@ -26,7 +26,7 @@ export default function Local() {
             <p className="text-sm font-medium text-zoria-blueLight">
               Tecnología cercana
             </p>
-            <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="mt-3 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
               Con un lugar al que acudir.
             </h2>
             <p className="mt-4 max-w-md text-graphite-400">

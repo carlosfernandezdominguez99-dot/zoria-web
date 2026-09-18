@@ -130,9 +130,9 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-zoria-blue px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition-all duration-400 hover:-translate-y-0.5 disabled:opacity-60"
+        className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border-2 border-zoria-blue bg-zoria-blue px-7 py-4 text-sm font-bold uppercase tracking-wide text-graphite-950 shadow-[5px_5px_0_0_rgba(22,224,189,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_rgba(22,224,189,0.3)] disabled:opacity-60"
       >
-        {status === "loading" ? "Enviando..." : "Hablamos →"}
+        {status === "loading" ? "Enviando..." : "Hablamos"}
       </button>
 
       {status === "error" && (

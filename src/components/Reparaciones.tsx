@@ -25,7 +25,7 @@ export default function Reparaciones() {
             viewport={viewport}
           >
             <span className="font-mono text-xs text-graphite-400">01</span>
-            <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="mt-3 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
               Déjalo en nuestras manos.
             </h2>
             <p className="mt-4 max-w-sm text-graphite-400">
@@ -36,7 +36,7 @@ export default function Reparaciones() {
 
             <a
               href="#contacto"
-              className="mt-9 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors duration-400 hover:text-zoria-blueLight"
+              className="mt-9 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-white underline decoration-zoria-blue decoration-2 underline-offset-4 transition-colors duration-200 hover:text-zoria-blueLight"
             >
               Quiero reparar mi dispositivo →
             </a>

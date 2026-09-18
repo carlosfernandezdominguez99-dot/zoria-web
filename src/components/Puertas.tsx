@@ -9,81 +9,70 @@ const puertas = [
     titulo: "Reparar / Comprar",
     texto: "Móviles, ordenadores, portátiles, tablets y mucho más.",
     href: "#reparaciones",
-    grande: true,
+    bg: "bg-zoria-blue",
+    text: "text-graphite-950",
+    border: "border-graphite-950",
   },
   {
     numero: "02",
     titulo: "Crear",
     texto: "Tu web. Tu tienda online. Tu presencia digital.",
     href: "#web",
-    grande: false,
+    bg: "bg-graphite-950",
+    text: "text-white",
+    border: "border-graphite-950",
   },
   {
     numero: "03",
     titulo: "Crecer",
     texto: "Contenido y redes sociales para que tu negocio no pase desapercibido.",
     href: "#redes",
-    grande: false,
+    bg: "bg-white",
+    text: "text-graphite-950",
+    border: "border-graphite-950",
   },
 ];
 
 export default function Puertas() {
   return (
-    <section className="border-t border-white/[0.06] bg-graphite-900 py-28">
+    <section className="border-t-2 border-graphite-950 bg-[#F4F6F5] py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <motion.div
+        <motion.h2
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="flex items-end justify-between gap-6"
+          className="max-w-lg text-balance text-4xl font-black tracking-tight text-graphite-950 sm:text-5xl"
         >
-          <h2 className="max-w-lg text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            ¿Qué necesitas?
-          </h2>
-          <span className="hidden font-mono text-xs text-graphite-400 sm:block">
-            001 — 003
-          </span>
-        </motion.div>
+          ¿Qué necesitas?
+        </motion.h2>
 
-        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] md:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
           {puertas.map((p, i) => (
             <motion.a
               key={p.numero}
               variants={fadeUp}
               initial="hidden"
-              whileInView="show"
+              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
               viewport={viewport}
-              transition={{ delay: i * 0.08 }}
+              transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
+              whileHover={{ rotate: i % 2 === 0 ? -1.5 : 1.5, y: -6 }}
               href={p.href}
-              className={`group relative flex flex-col justify-between overflow-hidden bg-graphite-950 p-8 transition-colors duration-400 hover:bg-gradient-to-br hover:from-zoria-blue/[0.14] hover:to-graphite-950 sm:p-10 ${
-                p.grande ? "md:row-span-2 md:min-h-[420px]" : "md:min-h-[204px]"
-              }`}
+              className={`flex min-h-[260px] flex-col justify-between rounded-2xl border-2 p-7 shadow-[6px_6px_0_0_rgba(10,13,18,0.9)] transition-shadow duration-200 hover:shadow-[9px_9px_0_0_rgba(10,13,18,0.9)] ${p.bg} ${p.text} ${p.border}`}
             >
-              <span
-                className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-zoria-blue transition-transform duration-400 group-hover:scale-x-100"
-                aria-hidden="true"
-              />
-              <div className="flex items-start justify-between">
-                <span className="font-mono text-xs text-graphite-400">
-                  {p.numero}
-                </span>
-                <span className="text-graphite-400 opacity-0 transition-all duration-400 group-hover:translate-x-1 group-hover:text-zoria-blueLight group-hover:opacity-100">
-                  ↗
-                </span>
-              </div>
-
+              <span className="font-mono text-xs font-bold opacity-60">
+                {p.numero}
+              </span>
               <div>
-                <h3
-                  className={`font-semibold tracking-tight text-white ${
-                    p.grande ? "text-4xl sm:text-5xl" : "text-2xl"
-                  }`}
-                >
+                <h3 className="text-2xl font-black tracking-tight">
                   {p.titulo}
                 </h3>
-                <p className="mt-3 max-w-xs text-sm leading-relaxed text-graphite-400">
+                <p className="mt-2.5 text-sm font-medium leading-relaxed opacity-70">
                   {p.texto}
                 </p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold">
+                  Descubrir →
+                </span>
               </div>
             </motion.a>
           ))}
