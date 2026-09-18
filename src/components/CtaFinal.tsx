@@ -6,15 +6,8 @@ import ContactForm from "./ContactForm";
 
 export default function CtaFinal() {
   return (
-    <section id="contacto" className="relative overflow-hidden border-t-2 border-graphite-950 bg-zoria-blue py-28">
-      <span
-        className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 select-none whitespace-nowrap font-black tracking-tight text-[18vw] text-graphite-950/[0.05] sm:text-[11vw]"
-        aria-hidden="true"
-      >
-        ZORIA
-      </span>
-
-      <div className="relative mx-auto max-w-2xl px-6">
+    <section id="contacto" className="border-t-2 border-graphite-950 bg-zoria-blue py-28">
+      <div className="mx-auto max-w-2xl px-6">
         <motion.div
           variants={fadeUp}
           initial="hidden"
