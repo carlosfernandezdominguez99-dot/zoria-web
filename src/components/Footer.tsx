@@ -33,9 +33,11 @@ export default function Footer() {
     <footer className="border-t border-white/[0.06] bg-graphite-950 py-16">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
-          <div className="flex items-center gap-2.5">
-            <ZoriaLogo className="h-7 w-7" />
-            <span className="text-sm font-semibold text-white">ZORIA</span>
+          <div className="flex flex-col gap-4">
+            <ZoriaLogo className="h-16 w-16" />
+            <span className="text-sm font-semibold text-white">
+              ZORIA · Soluciones digitales
+            </span>
           </div>
           {columnas.map((c) => (
             <div key={c.titulo}>

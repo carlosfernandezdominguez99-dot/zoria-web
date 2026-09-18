@@ -2,16 +2,24 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, stagger, viewport } from "@/lib/motion";
+import {
+  IconReel,
+  IconPost,
+  IconStory,
+  IconMusic,
+  IconChart,
+  IconChat,
+} from "./icons";
 
 const conceptos = ["Contenido", "Estrategia", "Edición", "Publicación", "Crecimiento"];
 
 const cards = [
-  { icono: "🎬", label: "Reel" },
-  { icono: "📸", label: "Post" },
-  { icono: "✨", label: "Story" },
-  { icono: "🎵", label: "TikTok" },
-  { icono: "📈", label: "Estadísticas" },
-  { icono: "💬", label: "Interacción" },
+  { Icono: IconReel, label: "Reel" },
+  { Icono: IconPost, label: "Post" },
+  { Icono: IconStory, label: "Story" },
+  { Icono: IconMusic, label: "TikTok" },
+  { Icono: IconChart, label: "Estadísticas" },
+  { Icono: IconChat, label: "Interacción" },
 ];
 
 export default function Redes() {
@@ -82,7 +90,7 @@ export default function Redes() {
                   i === 1 || i === 4 ? "translate-y-4" : ""
                 }`}
               >
-                <span className="text-2xl">{c.icono}</span>
+                <c.Icono className="h-6 w-6 text-zoria-blueLight" />
                 <span className="text-[11px] font-medium text-graphite-400">
                   {c.label}
                 </span>

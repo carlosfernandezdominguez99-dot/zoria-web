@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/motion";
+import ZoriaLogo from "./ZoriaLogo";
 
 export default function Hero() {
   return (
@@ -32,6 +33,10 @@ export default function Hero() {
         animate="show"
         className="relative mx-auto w-full max-w-6xl px-6"
       >
+        <motion.div variants={fadeUp} className="mb-7">
+          <ZoriaLogo className="h-11 w-11" />
+        </motion.div>
+
         <motion.p
           variants={fadeUp}
           className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium tracking-wide text-graphite-400"

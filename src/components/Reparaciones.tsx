@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, scaleIn, stagger, viewport } from "@/lib/motion";
+import { IconPhone, IconLaptop, IconDesktop, IconTablet } from "./icons";
 
 const dispositivos = [
-  { icono: "📱", label: "Móviles" },
-  { icono: "💻", label: "Portátiles" },
-  { icono: "🖥️", label: "Ordenadores" },
-  { icono: "📟", label: "Tablets" },
+  { Icono: IconPhone, label: "Móviles" },
+  { Icono: IconLaptop, label: "Portátiles" },
+  { Icono: IconDesktop, label: "Ordenadores" },
+  { Icono: IconTablet, label: "Tablets" },
 ];
 
 const pasos = [
@@ -50,7 +51,7 @@ export default function Reparaciones() {
                   key={d.label}
                   className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3"
                 >
-                  <span className="text-xl">{d.icono}</span>
+                  <d.Icono className="h-5 w-5 text-zoria-blueLight" />
                   <span className="text-sm font-medium text-graphite-100">
                     {d.label}
                   </span>

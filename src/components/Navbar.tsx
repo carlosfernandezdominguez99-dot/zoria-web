@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ZoriaLogo from "./ZoriaLogo";
 
 const links = [
   { href: "#reparaciones", label: "Reparaciones" },
@@ -28,11 +27,8 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="flex items-center gap-2.5">
-          <ZoriaLogo className="h-7 w-7" />
-          <span className="text-[15px] font-semibold tracking-tight text-white">
-            ZORIA
-          </span>
+        <a href="#top" className="text-[15px] font-semibold tracking-tight text-white">
+          ZORIA
         </a>
 
         <nav className="hidden items-center gap-8 text-sm text-graphite-400 md:flex">
@@ -49,7 +45,7 @@ export default function Navbar() {
 
         <a
           href="#contacto"
-          className="group inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-semibold text-graphite-950 transition-all duration-400 hover:bg-zoria-blue hover:text-white"
+          className="group inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-semibold text-graphite-950 transition-all duration-400 hover:bg-zoria-blue hover:text-graphite-950"
         >
           Hablamos
           <span className="transition-transform duration-400 group-hover:translate-x-0.5">
