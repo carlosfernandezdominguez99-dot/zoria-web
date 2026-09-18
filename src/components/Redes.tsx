@@ -6,6 +6,18 @@ import { IconReel, IconPost, IconStory, IconHeart } from "./icons";
 
 const conceptos = ["Contenido", "Estrategia", "Edición", "Publicación", "Crecimiento"];
 
+const casillas = [
+  { bg: "bg-zoria-blue" },
+  { bg: "bg-graphite-950", Icono: IconReel, iconClass: "text-zoria-blueLight" },
+  { bg: "bg-[#F4F6F5] border-2 border-graphite-950" },
+  { bg: "bg-graphite-950" },
+  { bg: "bg-zoria-blue", Icono: IconHeart, iconClass: "text-graphite-950" },
+  { bg: "bg-[#F4F6F5] border-2 border-graphite-950", Icono: IconPost, iconClass: "text-graphite-950" },
+  { bg: "bg-[#F4F6F5] border-2 border-graphite-950", Icono: IconStory, iconClass: "text-graphite-950" },
+  { bg: "bg-graphite-950" },
+  { bg: "bg-zoria-blue" },
+];
+
 export default function Redes() {
   return (
     <section id="redes" className="border-t-2 border-graphite-950 bg-white py-28">
@@ -51,60 +63,31 @@ export default function Redes() {
             initial="hidden"
             whileInView="show"
             viewport={viewport}
-            className="relative mx-auto h-[300px] w-full max-w-[280px]"
+            className="mx-auto w-full max-w-[300px] rounded-[28px] border-2 border-graphite-950 bg-white p-4 shadow-[10px_10px_0_0_rgba(10,13,18,0.9)]"
           >
-            {/* Story, detrás a la izquierda */}
-            <motion.div
-              initial={{ opacity: 0, x: -20, y: 10, rotate: 4 }}
-              whileInView={{ opacity: 1, x: 0, y: 0, rotate: -9 }}
-              viewport={viewport}
-              transition={{ delay: 0.15, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ rotate: -4, y: -4 }}
-              className="absolute left-0 top-6 w-[128px] rounded-2xl border-2 border-graphite-950 bg-zoria-blue p-4 shadow-[6px_6px_0_0_rgba(10,13,18,0.9)]"
-            >
-              <div className="flex items-start justify-between">
-                <IconStory className="h-6 w-6 text-graphite-950" />
-                <IconHeart className="h-3.5 w-3.5 text-graphite-950/40" />
-              </div>
-              <p className="mt-6 text-sm font-black text-graphite-950">Story</p>
-            </motion.div>
+            <div className="flex items-center gap-2.5 px-1 pb-3.5">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-graphite-950 bg-zoria-blue font-mono text-[10px] font-bold text-graphite-950">
+                Z
+              </span>
+              <span className="font-mono text-xs font-bold text-graphite-950">
+                @tunegocio
+              </span>
+            </div>
 
-            {/* Reel, detrás a la derecha */}
-            <motion.div
-              initial={{ opacity: 0, x: 20, y: 10, rotate: -4 }}
-              whileInView={{ opacity: 1, x: 0, y: 0, rotate: 10 }}
-              viewport={viewport}
-              transition={{ delay: 0.3, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ rotate: 4, y: -4 }}
-              className="absolute right-0 top-2 w-[128px] rounded-2xl border-2 border-graphite-950 bg-graphite-950 p-4 shadow-[6px_6px_0_0_rgba(10,13,18,0.35)]"
-            >
-              <div className="flex items-start justify-between">
-                <IconReel className="h-6 w-6 text-zoria-blueLight" />
-                <IconHeart className="h-3.5 w-3.5 text-white/40" />
-              </div>
-              <p className="mt-6 text-sm font-black text-white">Reel</p>
-            </motion.div>
-
-            {/* Post, delante y centrado */}
-            <motion.div
-              initial={{ opacity: 0, y: 24, rotate: 0, scale: 0.94 }}
-              whileInView={{ opacity: 1, y: 0, rotate: -3, scale: 1 }}
-              viewport={viewport}
-              transition={{ delay: 0.05, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ rotate: 0 }}
-              className="absolute bottom-2 left-1/2 w-[172px] -translate-x-1/2 rounded-2xl border-2 border-graphite-950 bg-white p-5 shadow-[9px_9px_0_0_rgba(10,13,18,0.9)]"
-            >
-              <div className="flex items-start justify-between">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-graphite-950 bg-[#F4F6F5]">
-                  <IconPost className="h-[18px] w-[18px] text-graphite-950" />
-                </span>
-                <IconHeart className="h-4 w-4 text-graphite-950/50" />
-              </div>
-              <p className="mt-4 text-base font-black text-graphite-950">Post</p>
-              <p className="mt-1 text-xs text-graphite-950/50">
-                Diseñado, editado y publicado
-              </p>
-            </motion.div>
+            <div className="grid grid-cols-3 gap-1.5">
+              {casillas.map((c, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={viewport}
+                  transition={{ delay: i * 0.05, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className={`flex aspect-square items-center justify-center rounded-lg ${c.bg}`}
+                >
+                  {c.Icono && <c.Icono className={`h-5 w-5 ${c.iconClass}`} />}
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
