@@ -60,27 +60,72 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Composición visual: tarjetas flotantes que dan profundidad al lado vacío */}
+        {/* Composición visual: pila de tarjetas ancladas a la derecha, con línea de conexión */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="show"
           transition={{ delay: 0.3 }}
-          className="relative hidden h-[420px] w-full lg:block"
+          className="relative hidden h-[440px] w-full lg:block"
         >
           <span
             className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-graphite-950/5 blur-3xl"
             aria-hidden="true"
           />
 
-          {/* Tarjeta principal: mockup tipo web */}
+          {/* Chip flotante superior, conectado por línea */}
           <motion.div
-            initial={{ opacity: 0, y: 24, rotate: -6 }}
-            animate={{ opacity: 1, y: 0, rotate: -4 }}
-            transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ rotate: -1, y: -4 }}
-            className="absolute left-1/2 top-8 w-[260px] -translate-x-1/2 rounded-2xl border-2 border-graphite-950 bg-graphite-950 p-4 shadow-[8px_8px_0_0_rgba(10,13,18,0.35)]"
+            initial={{ opacity: 0, y: -12, rotate: 4 }}
+            animate={{ opacity: 1, y: 0, rotate: 3 }}
+            transition={{ delay: 0.55, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ rotate: 0, y: -3 }}
+            className="absolute left-2 top-2 flex w-[172px] items-center gap-3 rounded-2xl border-2 border-graphite-950 bg-graphite-950 p-3.5 shadow-[6px_6px_0_0_rgba(10,13,18,0.3)]"
           >
+            <IconChart className="h-5 w-5 shrink-0 text-zoria-blue" />
+            <p className="text-xs font-black leading-tight text-white">
+              Más visibilidad
+              <br />
+              <span className="font-mono text-[9px] font-normal text-white/40">
+                redes · contenido
+              </span>
+            </p>
+          </motion.div>
+
+          {/* Línea discontinua conectora */}
+          <svg
+            className="pointer-events-none absolute left-[86px] top-[70px] h-[110px] w-[90px]"
+            viewBox="0 0 90 110"
+            fill="none"
+            aria-hidden="true"
+          >
+            <motion.path
+              d="M4 4 C 4 60, 60 40, 82 100"
+              stroke="#0A0D12"
+              strokeWidth="2"
+              strokeDasharray="1 8"
+              strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 0.35 }}
+              transition={{ delay: 0.9, duration: 0.9, ease: "easeOut" }}
+            />
+          </svg>
+
+          {/* Tarjeta principal: mockup tipo web, con badge rotulador clavado en la esquina */}
+          <motion.div
+            initial={{ opacity: 0, y: 24, rotate: -5 }}
+            animate={{ opacity: 1, y: [0, -8, 0], rotate: -3 }}
+            transition={{
+              opacity: { delay: 0.45, duration: 0.6 },
+              rotate: { delay: 0.45, duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+              y: { delay: 1.1, duration: 5, repeat: Infinity, ease: "easeInOut" },
+            }}
+            whileHover={{ rotate: 0 }}
+            className="absolute right-2 top-10 w-[270px] rounded-2xl border-2 border-graphite-950 bg-graphite-950 p-4 shadow-[9px_9px_0_0_rgba(10,13,18,0.35)]"
+          >
+            <span className="absolute -right-4 -top-5 flex h-14 w-14 rotate-[10deg] items-center justify-center rounded-full border-2 border-graphite-950 bg-zoria-blue font-hand text-base font-bold text-graphite-950 shadow-[3px_3px_0_0_rgba(10,13,18,0.9)]">
+              ¡en serio!
+            </span>
+
             <div className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
               <span className="h-1.5 w-1.5 rounded-full bg-white/25" />
@@ -96,61 +141,24 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Tarjeta: reparación */}
+          {/* Tarjeta apilada: reparación, semi-oculta bajo la principal */}
           <motion.div
-            initial={{ opacity: 0, x: -16, rotate: 8 }}
-            animate={{ opacity: 1, x: 0, rotate: 7 }}
-            transition={{ delay: 0.7, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ rotate: 3, y: -4 }}
-            className="absolute -left-2 bottom-24 w-[168px] rounded-2xl border-2 border-graphite-950 bg-white p-4 shadow-[7px_7px_0_0_rgba(10,13,18,0.85)]"
+            initial={{ opacity: 0, y: 16, rotate: 10 }}
+            animate={{ opacity: 1, y: 0, rotate: 8 }}
+            transition={{ delay: 0.75, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ rotate: 4, y: -6 }}
+            className="absolute bottom-6 right-16 w-[184px] rounded-2xl border-2 border-graphite-950 bg-white p-4 shadow-[7px_7px_0_0_rgba(10,13,18,0.85)]"
           >
-            <IconPhone className="h-6 w-6 text-graphite-950" />
+            <div className="flex items-center justify-between">
+              <IconPhone className="h-6 w-6 text-graphite-950" />
+              <span className="font-mono text-[10px] text-graphite-950/40">01</span>
+            </div>
             <p className="mt-3 text-sm font-black leading-tight text-graphite-950">
               Reparación
               <br />
               en el día
             </p>
-            <span className="mt-2 block font-mono text-[10px] text-graphite-950/50">
-              01
-            </span>
           </motion.div>
-
-          {/* Tarjeta: redes / crecimiento */}
-          <motion.div
-            initial={{ opacity: 0, x: 16, rotate: -10 }}
-            animate={{ opacity: 1, x: 0, rotate: -8 }}
-            transition={{ delay: 0.85, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ rotate: -4, y: -4 }}
-            className="absolute -right-3 bottom-4 w-[150px] rounded-2xl border-2 border-graphite-950 bg-graphite-950 p-4 shadow-[7px_7px_0_0_rgba(10,13,18,0.35)]"
-          >
-            <IconChart className="h-6 w-6 text-zoria-blue" />
-            <p className="mt-3 text-sm font-black leading-tight text-white">
-              Más
-              <br />
-              visibilidad
-            </p>
-            <span className="mt-2 block font-mono text-[10px] text-white/40">
-              03
-            </span>
-          </motion.div>
-
-          {/* Acento rotulador */}
-          <motion.span
-            initial={{ opacity: 0, rotate: -8, scale: 0.8 }}
-            animate={{ opacity: 1, rotate: -8, scale: 1 }}
-            transition={{ delay: 1.05, duration: 0.5, ease: "backOut" }}
-            className="absolute right-6 top-0 select-none font-hand text-3xl font-bold text-graphite-950"
-          >
-            ¡en serio!
-          </motion.span>
-
-          {/* Puntito conector */}
-          <motion.span
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.2, duration: 0.4 }}
-            className="absolute left-[38%] top-[52%] h-2.5 w-2.5 rounded-full border-2 border-graphite-950 bg-white"
-          />
         </motion.div>
       </div>
 

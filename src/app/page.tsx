@@ -10,6 +10,7 @@ import Confianza from "@/components/Confianza";
 import Local from "@/components/Local";
 import CtaFinal from "@/components/CtaFinal";
 import Footer from "@/components/Footer";
+import FloatingActions from "@/components/FloatingActions";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <Local />
       <CtaFinal />
       <Footer />
+      <FloatingActions />
     </main>
   );
 }
