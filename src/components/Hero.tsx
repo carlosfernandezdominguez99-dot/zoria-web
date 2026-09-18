@@ -3,9 +3,6 @@
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/motion";
 
-const RING_TEXT =
-  "ZORIA · REPARA · CREA · CRECE · ZORIA · REPARA · CREA · CRECE · ";
-
 export default function Hero() {
   return (
     <section
@@ -62,81 +59,113 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Sello circular giratorio: un único elemento gráfico que escala de móvil a escritorio sin cambiar de forma */}
+        {/* Conversación en vivo: una tarjeta tipo chat que cuenta la propuesta de Zoria en lugar de repetir el titular */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="show"
           transition={{ delay: 0.35 }}
-          className="relative mx-auto flex h-[240px] w-[240px] items-center justify-center sm:h-[300px] sm:w-[300px] lg:mx-0 lg:h-[380px] lg:w-[380px]"
+          className="relative mx-auto w-full max-w-[300px] lg:mx-0 lg:max-w-none"
         >
-          <span
-            className="pointer-events-none absolute inset-0 rounded-full bg-graphite-950/5 blur-3xl"
-            aria-hidden="true"
-          />
-
-          {/* Anillo de texto girando sin parar */}
-          <motion.svg
-            viewBox="0 0 300 300"
-            className="absolute inset-0 h-full w-full"
-            initial={{ rotate: 0 }}
-            animate={{ rotate: 360 }}
-            transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-            style={{ transformOrigin: "150px 150px" }}
-          >
-            <defs>
-              <path
-                id="heroRing"
-                d="M150,150 m -132,0 a132,132 0 1,1 264,0 a132,132 0 1,1 -264,0"
-              />
-            </defs>
-            <text
-              fill="#0A0D12"
-              fontSize="13.5"
-              fontWeight="700"
-              letterSpacing="2.5"
-              className="font-mono uppercase"
-            >
-              <textPath href="#heroRing" startOffset="0%">
-                {RING_TEXT}
-              </textPath>
-            </text>
-          </motion.svg>
-
-          {/* Sello central, fijo, sin girar */}
+          {/* Etiqueta trasera: primer contacto */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.6, duration: 0.6, ease: "backOut" }}
-            className="relative flex h-[128px] w-[128px] flex-col items-center justify-center rounded-full border-2 border-graphite-950 bg-graphite-950 shadow-[8px_8px_0_0_rgba(10,13,18,0.35)] sm:h-[160px] sm:w-[160px] lg:h-[200px] lg:w-[200px]"
+            initial={{ opacity: 0, x: -16, rotate: 5 }}
+            animate={{ opacity: 1, x: 0, rotate: 6 }}
+            transition={{ delay: 0.5, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute -left-3 top-6 hidden w-[132px] rounded-2xl border-2 border-graphite-950 bg-white p-3.5 shadow-[6px_6px_0_0_rgba(10,13,18,0.85)] sm:block"
           >
-            <motion.svg
-              viewBox="0 0 100 100"
-              className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12"
-              animate={{ scale: [1, 1.12, 1], rotate: [0, 8, 0] }}
-              transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <path
-                d="M50 0 C52 35 65 48 100 50 C65 52 52 65 50 100 C48 65 35 52 0 50 C35 48 48 35 50 0 Z"
-                fill="#16E0BD"
-              />
-            </motion.svg>
-            <p className="mt-2 px-2 text-center font-mono text-[8px] font-bold uppercase leading-tight tracking-wide text-white/70 sm:text-[9px] lg:text-[10px]">
-              Todo lo digital
+            <span className="block h-1.5 w-1.5 rounded-full bg-zoria-blueLight" />
+            <p className="mt-2 text-[11px] font-black leading-snug text-graphite-950">
+              Sin líos.
               <br />
-              en un sitio
+              Sin esperas.
             </p>
           </motion.div>
 
-          {/* Etiqueta rotulador, clavada en el borde del sello */}
-          <motion.span
-            initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
-            animate={{ opacity: 1, scale: 1, rotate: -8 }}
-            transition={{ delay: 1, duration: 0.5, ease: "backOut" }}
-            className="absolute -bottom-2 -right-1 flex h-12 w-12 items-center justify-center rounded-full border-2 border-graphite-950 bg-white font-hand text-xs font-bold text-graphite-950 shadow-[3px_3px_0_0_rgba(10,13,18,0.9)] sm:h-14 sm:w-14 sm:text-sm lg:h-16 lg:w-16 lg:text-base"
+          {/* Tarjeta principal: mini conversación */}
+          <motion.div
+            initial={{ opacity: 0, y: 20, rotate: -3 }}
+            animate={{ opacity: 1, y: 0, rotate: -2 }}
+            transition={{ delay: 0.45, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ rotate: 0 }}
+            className="relative ml-auto w-full rounded-[28px] border-2 border-graphite-950 bg-white p-4 shadow-[10px_10px_0_0_rgba(10,13,18,0.9)] sm:w-[280px]"
           >
-            ¡en serio!
-          </motion.span>
+            <span className="absolute -right-4 -top-5 flex h-14 w-14 rotate-[9deg] items-center justify-center rounded-full border-2 border-graphite-950 bg-zoria-blue font-hand text-base font-bold text-graphite-950 shadow-[3px_3px_0_0_rgba(10,13,18,0.9)]">
+              ¡en serio!
+            </span>
+
+            <div className="flex items-center gap-2 border-b border-graphite-950/10 pb-3">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-zoria-blue opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-zoria-blue" />
+              </span>
+              <span className="font-mono text-[10px] font-bold uppercase tracking-wide text-graphite-950/60">
+                Zoria · en línea
+              </span>
+            </div>
+
+            <div className="mt-3.5 flex flex-col gap-2">
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.4 }}
+                className="max-w-[82%] rounded-2xl rounded-bl-sm bg-graphite-100 px-3.5 py-2 text-xs font-medium text-graphite-950"
+              >
+                Se me ha roto la pantalla del móvil
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.3, duration: 0.4 }}
+                className="ml-auto max-w-[82%] rounded-2xl rounded-br-sm bg-graphite-950 px-3.5 py-2 text-xs font-medium text-white"
+              >
+                Tráelo cuando quieras, te lo miramos al momento
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.7, duration: 0.4 }}
+                className="max-w-[82%] rounded-2xl rounded-bl-sm bg-graphite-100 px-3.5 py-2 text-xs font-medium text-graphite-950"
+              >
+                ¿Y podéis con la web de mi negocio?
+              </motion.div>
+
+              {/* Indicador de "escribiendo" superpuesto sobre la respuesta final, que ya reserva su espacio */}
+              <div className="relative ml-auto w-fit max-w-[210px]">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 2.75, duration: 0.4 }}
+                  className="rounded-2xl rounded-br-sm bg-zoria-blue px-3.5 py-2 text-xs font-bold leading-snug text-graphite-950"
+                >
+                  Con eso también. Todo en un mismo sitio.
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, 1, 1, 0] }}
+                  transition={{ delay: 2.05, duration: 0.85, times: [0, 0.2, 0.8, 1] }}
+                  className="absolute inset-0 flex items-center gap-1 rounded-2xl rounded-br-sm bg-graphite-950 px-3.5"
+                >
+                  {[0, 1, 2].map((i) => (
+                    <motion.span
+                      key={i}
+                      animate={{ y: [0, -3, 0] }}
+                      transition={{
+                        delay: i * 0.15,
+                        duration: 0.7,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="h-1.5 w-1.5 rounded-full bg-white/60"
+                    />
+                  ))}
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
