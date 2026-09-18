@@ -35,7 +35,7 @@ export default function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-4">
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl border-2 border-graphite-950 bg-white p-1.5 shadow-[3px_3px_0_0_rgba(10,13,18,0.9)]">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl border-2 border-graphite-950 bg-graphite-950 p-2 shadow-[4px_4px_0_0_rgba(22,224,189,0.6)]">
                 <ZoriaLogo className="h-full w-full" />
               </span>
               <span className="text-2xl font-black leading-none tracking-tight text-graphite-950">
