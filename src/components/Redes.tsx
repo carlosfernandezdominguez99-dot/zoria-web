@@ -14,7 +14,7 @@ const posts = [
 
 export default function Redes() {
   return (
-    <section id="redes" className="border-t border-white/[0.06] bg-graphite-800 py-28">
+    <section id="redes" className="border-t-2 border-graphite-950 bg-white py-28">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-16 md:grid-cols-2 md:items-center">
           <motion.div
@@ -23,12 +23,12 @@ export default function Redes() {
             whileInView="show"
             viewport={viewport}
           >
-            <span className="font-mono text-xs text-graphite-400">03</span>
-            <h2 className="mt-3 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
+            <span className="font-mono text-xs text-graphite-950/40">03</span>
+            <h2 className="mt-3 text-balance text-3xl font-black tracking-tight text-graphite-950 sm:text-4xl">
               Que te vean.
               <br /> Que te recuerden.
             </h2>
-            <p className="mt-4 max-w-md text-graphite-400">
+            <p className="mt-4 max-w-md text-graphite-950/60">
               Creamos contenido y gestionamos Instagram, TikTok y Facebook
               para que tu negocio tenga presencia constante.
             </p>
@@ -37,7 +37,7 @@ export default function Redes() {
               {conceptos.map((c) => (
                 <span
                   key={c}
-                  className="rounded-full border border-white/15 px-3.5 py-1.5 text-xs font-semibold text-graphite-100"
+                  className="rounded-full border-2 border-graphite-950 bg-[#F4F6F5] px-3.5 py-1.5 text-xs font-bold text-graphite-950"
                 >
                   {c}
                 </span>
@@ -46,7 +46,7 @@ export default function Redes() {
 
             <a
               href="#contacto"
-              className="mt-10 inline-flex items-center gap-2 rounded-full border-2 border-graphite-950 bg-white px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-graphite-950 shadow-[5px_5px_0_0_rgba(0,0,0,0.5)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_rgba(0,0,0,0.5)]"
+              className="mt-10 inline-flex items-center gap-2 rounded-full border-2 border-graphite-950 bg-graphite-950 px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-[5px_5px_0_0_rgba(10,13,18,0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_rgba(10,13,18,0.25)]"
             >
               Potenciar mis redes →
             </a>
@@ -59,7 +59,7 @@ export default function Redes() {
             viewport={viewport}
             className="mx-auto w-full max-w-[240px]"
           >
-            <div className="rounded-[2rem] border border-white/[0.08] bg-graphite-950 p-2.5 shadow-card">
+            <div className="rounded-[2rem] border-2 border-graphite-950 bg-graphite-950 p-2.5 shadow-[10px_10px_0_0_rgba(10,13,18,0.2)]">
               <div className="flex items-center justify-between px-2 pb-2 pt-1">
                 <span className="h-1.5 w-10 rounded-full bg-white/10" />
                 <span className="h-1.5 w-1.5 rounded-full bg-white/10" />

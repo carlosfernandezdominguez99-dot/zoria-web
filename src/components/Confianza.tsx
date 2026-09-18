@@ -12,14 +12,14 @@ const mensajes = [
 
 export default function Confianza() {
   return (
-    <section className="border-t border-white/[0.06] bg-graphite-950 py-24">
+    <section className="border-t-2 border-graphite-950 bg-[#F4F6F5] py-24">
       <div className="mx-auto max-w-6xl px-6">
         <motion.p
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="font-mono text-xs uppercase tracking-wide text-graphite-400"
+          className="font-mono text-xs uppercase tracking-wide text-graphite-950/50"
         >
           Cómo trabajamos contigo
         </motion.p>
@@ -33,7 +33,7 @@ export default function Confianza() {
               whileInView="show"
               viewport={viewport}
               transition={{ delay: i * 0.08 }}
-              className="rounded-full border-2 border-white/15 px-5 py-2.5 text-base font-bold tracking-tight text-white sm:text-lg"
+              className="rounded-full border-2 border-graphite-950 bg-white px-5 py-2.5 text-base font-bold tracking-tight text-graphite-950 sm:text-lg"
             >
               {m}
             </motion.span>

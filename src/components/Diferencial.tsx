@@ -7,7 +7,7 @@ const pasos = ["Repara", "Conecta", "Crece"];
 
 export default function Diferencial() {
   return (
-    <section className="relative overflow-hidden border-t border-white/10 bg-zoria-blue py-32">
+    <section className="relative overflow-hidden border-t-2 border-graphite-950 bg-zoria-blue py-32">
       <span
         className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap font-mono text-[22vw] font-medium text-graphite-950/[0.06] sm:text-[14vw]"
         aria-hidden="true"

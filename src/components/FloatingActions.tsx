@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconChat } from "./icons";
+import { WHATSAPP_NUMBER } from "@/lib/config";
 
 export default function FloatingActions() {
   const [showTop, setShowTop] = useState(false);
@@ -34,10 +35,14 @@ export default function FloatingActions() {
       </AnimatePresence>
 
       <motion.a
-        href="#"
-        aria-label="WhatsApp — próximamente"
-        title="WhatsApp — próximamente"
-        onClick={(e) => e.preventDefault()}
+        href={WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER}` : "#"}
+        target={WHATSAPP_NUMBER ? "_blank" : undefined}
+        rel={WHATSAPP_NUMBER ? "noopener noreferrer" : undefined}
+        aria-label={WHATSAPP_NUMBER ? "Escríbenos por WhatsApp" : "WhatsApp — próximamente"}
+        title={WHATSAPP_NUMBER ? "Escríbenos por WhatsApp" : "WhatsApp — próximamente"}
+        onClick={(e) => {
+          if (!WHATSAPP_NUMBER) e.preventDefault();
+        }}
         initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4, duration: 0.4, ease: "backOut" }}

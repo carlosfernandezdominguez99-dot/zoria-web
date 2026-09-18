@@ -14,8 +14,16 @@ const items = [
 
 export default function Web() {
   return (
-    <section id="web" className="border-t border-white/[0.06] bg-graphite-950 py-28">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="web" className="relative overflow-hidden border-t-2 border-graphite-950 bg-zoria-blue py-28">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage: "radial-gradient(#0A0D12 1px, transparent 1px)",
+          backgroundSize: "20px 20px",
+        }}
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto max-w-6xl px-6">
         <div className="grid gap-16 md:grid-cols-2 md:items-center">
           <motion.div
             variants={scaleIn}
@@ -24,8 +32,8 @@ export default function Web() {
             viewport={viewport}
             className="order-2 md:order-1"
           >
-            <div className="overflow-hidden rounded-xl border border-white/[0.08] bg-graphite-900">
-              <div className="flex items-center gap-2 border-b border-white/[0.06] px-4 py-3">
+            <div className="overflow-hidden rounded-2xl border-2 border-graphite-950 bg-graphite-950 shadow-[10px_10px_0_0_rgba(10,13,18,0.35)]">
+              <div className="flex items-center gap-2 border-b border-white/[0.08] px-4 py-3">
                 <span className="h-2 w-2 rounded-full bg-white/15" />
                 <span className="h-2 w-2 rounded-full bg-white/15" />
                 <span className="h-2 w-2 rounded-full bg-white/15" />
@@ -83,12 +91,12 @@ export default function Web() {
             viewport={viewport}
             className="order-1 md:order-2"
           >
-            <span className="font-mono text-xs text-graphite-400">02</span>
-            <h2 className="mt-3 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
+            <span className="font-mono text-xs text-graphite-950/50">02</span>
+            <h2 className="mt-3 text-balance text-3xl font-black tracking-tight text-graphite-950 sm:text-4xl">
               Tu negocio también
               <br /> merece una buena web.
             </h2>
-            <p className="mt-4 max-w-md text-graphite-400">
+            <p className="mt-4 max-w-md text-graphite-950/70">
               Diseñamos, construimos y mantenemos tu presencia digital: desde
               una web corporativa hasta una tienda online completa.
             </p>
@@ -97,7 +105,7 @@ export default function Web() {
               {items.map((i) => (
                 <span
                   key={i}
-                  className="rounded-full border border-white/15 px-3.5 py-1.5 text-xs font-semibold text-graphite-100"
+                  className="rounded-full border-2 border-graphite-950 bg-white px-3.5 py-1.5 text-xs font-bold text-graphite-950"
                 >
                   {i}
                 </span>
@@ -106,7 +114,7 @@ export default function Web() {
 
             <a
               href="#contacto"
-              className="mt-10 inline-flex items-center gap-2 rounded-full border-2 border-zoria-blue bg-zoria-blue px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-graphite-950 shadow-[5px_5px_0_0_rgba(22,224,189,0.35)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_rgba(22,224,189,0.35)]"
+              className="mt-10 inline-flex items-center gap-2 rounded-full border-2 border-graphite-950 bg-graphite-950 px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-[5px_5px_0_0_rgba(10,13,18,0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_rgba(10,13,18,0.25)]"
             >
               Quiero una web →
             </a>

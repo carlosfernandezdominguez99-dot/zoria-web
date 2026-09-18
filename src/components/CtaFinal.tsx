@@ -19,12 +19,15 @@ export default function CtaFinal() {
           viewport={viewport}
           className="text-center"
         >
-          <h2 className="text-balance text-4xl font-black tracking-tight text-white sm:text-5xl">
+          <p className="font-mono text-xs uppercase tracking-wide text-zoria-blueLight">
+            Atención rápida y personalizada
+          </p>
+          <h2 className="mt-3 text-balance text-4xl font-black tracking-tight text-white sm:text-5xl">
             ¿Qué podemos hacer por ti?
           </h2>
           <p className="mt-4 text-balance text-graphite-400">
-            Desde reparar un móvil hasta crear la presencia digital completa
-            de tu negocio.
+            Te contestamos nosotros mismos — sin bots ni esperas — y adaptamos
+            la respuesta a lo que de verdad necesitas.
           </p>
         </motion.div>
 
