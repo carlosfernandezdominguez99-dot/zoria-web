@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { IconChat } from "./icons";
+import { IconWhatsApp } from "./icons";
 import { WHATSAPP_NUMBER } from "@/lib/config";
 
 export default function FloatingActions() {
@@ -49,7 +49,7 @@ export default function FloatingActions() {
         whileHover={{ y: -3, rotate: -3 }}
         className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-graphite-950 bg-zoria-blue text-graphite-950 shadow-[5px_5px_0_0_rgba(10,13,18,0.9)] transition-shadow duration-200 hover:shadow-[7px_7px_0_0_rgba(10,13,18,0.9)]"
       >
-        <IconChat className="h-6 w-6" />
+        <IconWhatsApp className="h-7 w-7" />
       </motion.a>
     </div>
   );

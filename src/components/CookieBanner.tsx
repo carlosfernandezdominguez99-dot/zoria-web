@@ -51,7 +51,7 @@ export default function CookieBanner() {
               onClick={cerrar}
               className="rounded-full border-2 border-graphite-950 px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-graphite-950 transition-colors duration-200 hover:bg-graphite-950 hover:text-white"
             >
-              Solo lo necesario
+              Rechazar
             </button>
           </div>
         </motion.div>
