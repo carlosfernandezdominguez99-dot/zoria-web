@@ -6,6 +6,7 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from "@/lib/supabase";
 const servicios = [
   "Reparación de móviles",
   "Compra/venta de móviles",
+  "Reparación y montaje/venta de ordenadores",
   "Diseño y creación de webs",
   "Mantenimiento web",
   "Redes sociales",

@@ -12,6 +12,18 @@ const servicios = [
       "Móviles nuevos y reacondicionados, revisados y listos para usar, a precios competitivos.",
   },
   {
+    icono: "🖥️",
+    titulo: "Reparación de ordenadores",
+    descripcion:
+      "Reparación y montaje de ordenadores y portátiles, con diagnóstico y repuestos de calidad.",
+  },
+  {
+    icono: "🖱️",
+    titulo: "Venta de ordenadores",
+    descripcion:
+      "Equipos de sobremesa y portátiles nuevos o montados a medida según lo que necesites.",
+  },
+  {
     icono: "💻",
     titulo: "Diseño y creación de webs",
     descripcion:
