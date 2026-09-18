@@ -91,3 +91,25 @@ export function IconChat({ className = base }: IconProps) {
     </svg>
   );
 }
+
+export function IconHeart({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} stroke="currentColor" strokeWidth="1.6">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 20s-7-4.35-9.5-9C1 7.8 2.8 5 5.8 5c1.8 0 3.2 1 4.2 2.3C11 6 12.4 5 14.2 5c3 0 4.8 2.8 3.3 6C15 15.65 12 20 12 20z"
+      />
+    </svg>
+  );
+}
+
+export function IconImage({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} stroke="currentColor" strokeWidth="1.6">
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <circle cx="8.5" cy="9.5" r="1.4" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l5-5 3.5 3.5L16 11l4 5" />
+    </svg>
+  );
+}

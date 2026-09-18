@@ -2,14 +2,29 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, viewport } from "@/lib/motion";
-import { IconReel, IconPost, IconStory } from "./icons";
+import { IconReel, IconPost, IconStory, IconHeart } from "./icons";
 
 const conceptos = ["Contenido", "Estrategia", "Edición", "Publicación", "Crecimiento"];
 
 const posts = [
-  { tag: "Reel", h: "h-24", Icono: IconReel },
-  { tag: "Post", h: "h-32", Icono: IconPost },
-  { tag: "Story", h: "h-20", Icono: IconStory },
+  {
+    tag: "Reel",
+    h: "h-28",
+    Icono: IconReel,
+    gradient: "from-zoria-blue/40 via-graphite-800 to-graphite-950",
+  },
+  {
+    tag: "Post",
+    h: "h-32",
+    Icono: IconPost,
+    gradient: "from-graphite-600 via-graphite-800 to-graphite-950",
+  },
+  {
+    tag: "Story",
+    h: "h-24",
+    Icono: IconStory,
+    gradient: "from-zoria-blueDim/35 via-graphite-700 to-graphite-950",
+  },
 ];
 
 export default function Redes() {
@@ -72,13 +87,13 @@ export default function Redes() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={viewport}
                     transition={{ delay: 0.12 * i, duration: 0.5 }}
-                    className={`relative ${p.h} overflow-hidden rounded-xl border border-white/[0.06] bg-gradient-to-br from-graphite-800 to-graphite-950`}
+                    className={`relative ${p.h} overflow-hidden rounded-xl border border-white/[0.08] bg-gradient-to-br ${p.gradient}`}
                   >
-                    <p.Icono className="absolute left-2.5 top-2.5 h-4 w-4 text-graphite-600" />
-                    <span className="absolute bottom-2 left-2.5 font-mono text-[10px] uppercase tracking-wide text-graphite-400">
+                    <p.Icono className="absolute inset-0 m-auto h-7 w-7 text-white/70" />
+                    <span className="absolute bottom-2 left-2.5 font-mono text-[10px] font-bold uppercase tracking-wide text-white/70">
                       {p.tag}
                     </span>
-                    <span className="absolute right-2.5 top-2.5 h-1.5 w-1.5 rounded-full bg-zoria-blueLight/70" />
+                    <IconHeart className="absolute right-2.5 top-2.5 h-3.5 w-3.5 text-white/50" />
                   </motion.div>
                 ))}
               </div>
