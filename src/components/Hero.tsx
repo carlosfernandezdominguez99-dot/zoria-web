@@ -129,7 +129,25 @@ export default function Hero() {
                 transition={{ delay: 1.7, duration: 0.4 }}
                 className="max-w-[82%] rounded-2xl rounded-bl-sm bg-graphite-100 px-3.5 py-2 text-xs font-medium text-graphite-950"
               >
-                ¿Y podéis con la web de mi negocio?
+                ¿Podéis hacer una web?
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 2.1, duration: 0.4 }}
+                className="ml-auto max-w-[82%] rounded-2xl rounded-br-sm bg-graphite-950 px-3.5 py-2 text-xs font-medium text-white"
+              >
+                Claro, a tu medida y lista para vender
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 2.5, duration: 0.4 }}
+                className="max-w-[82%] rounded-2xl rounded-bl-sm bg-graphite-100 px-3.5 py-2 text-xs font-medium text-graphite-950"
+              >
+                ¿Y las redes del negocio?
               </motion.div>
 
               {/* Indicador de "escribiendo" superpuesto sobre la respuesta final, que ya reserva su espacio */}
@@ -137,16 +155,16 @@ export default function Hero() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 2.75, duration: 0.4 }}
+                  transition={{ delay: 3.55, duration: 0.4 }}
                   className="rounded-2xl rounded-br-sm bg-zoria-blue px-3.5 py-2 text-xs font-bold leading-snug text-graphite-950"
                 >
-                  Con eso también. Todo en un mismo sitio.
+                  Con eso también. Contenido y publicaciones, sin que muevas un dedo.
                 </motion.div>
 
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0, 1, 1, 0] }}
-                  transition={{ delay: 2.05, duration: 0.85, times: [0, 0.2, 0.8, 1] }}
+                  transition={{ delay: 2.85, duration: 0.85, times: [0, 0.2, 0.8, 1] }}
                   className="absolute inset-0 flex items-center gap-1 rounded-2xl rounded-br-sm bg-graphite-950 px-3.5"
                 >
                   {[0, 1, 2].map((i) => (
