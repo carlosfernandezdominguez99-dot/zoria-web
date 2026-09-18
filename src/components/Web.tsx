@@ -6,6 +6,7 @@ import { fadeUp, scaleIn, viewport } from "@/lib/motion";
 const items = [
   "Web corporativa",
   "Tienda online",
+  "Aplicaciones a medida",
   "Reservas",
   "Mantenimiento",
   "Automatizaciones",
@@ -92,14 +93,16 @@ export default function Web() {
               una web corporativa hasta una tienda online completa.
             </p>
 
-            <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3">
+            <div className="mt-8 flex flex-wrap gap-2">
               {items.map((i) => (
-                <li key={i} className="flex items-center gap-2 text-sm text-graphite-100">
-                  <span className="h-1 w-1 rounded-full bg-zoria-blueLight" />
+                <span
+                  key={i}
+                  className="rounded-full border border-white/15 px-3.5 py-1.5 text-xs font-semibold text-graphite-100"
+                >
                   {i}
-                </li>
+                </span>
               ))}
-            </ul>
+            </div>
 
             <a
               href="#contacto"

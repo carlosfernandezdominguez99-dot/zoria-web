@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, viewport } from "@/lib/motion";
+import { IconReel, IconPost, IconStory } from "./icons";
 
 const conceptos = ["Contenido", "Estrategia", "Edición", "Publicación", "Crecimiento"];
 
 const posts = [
-  { tag: "Reel", h: "h-24" },
-  { tag: "Post", h: "h-32" },
-  { tag: "Story", h: "h-20" },
+  { tag: "Reel", h: "h-24", Icono: IconReel },
+  { tag: "Post", h: "h-32", Icono: IconPost },
+  { tag: "Story", h: "h-20", Icono: IconStory },
 ];
 
 export default function Redes() {
@@ -32,20 +33,20 @@ export default function Redes() {
               para que tu negocio tenga presencia constante.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-wide text-graphite-400">
-              {conceptos.map((c, i) => (
-                <span key={c} className="flex items-center gap-4">
+            <div className="mt-8 flex flex-wrap gap-2">
+              {conceptos.map((c) => (
+                <span
+                  key={c}
+                  className="rounded-full border border-white/15 px-3.5 py-1.5 text-xs font-semibold text-graphite-100"
+                >
                   {c}
-                  {i < conceptos.length - 1 && (
-                    <span className="text-graphite-600">/</span>
-                  )}
                 </span>
               ))}
             </div>
 
             <a
               href="#contacto"
-              className="mt-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-white underline decoration-zoria-blue decoration-2 underline-offset-4 transition-colors duration-200 hover:text-zoria-blueLight"
+              className="mt-10 inline-flex items-center gap-2 rounded-full border-2 border-graphite-950 bg-white px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-graphite-950 shadow-[5px_5px_0_0_rgba(0,0,0,0.5)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_rgba(0,0,0,0.5)]"
             >
               Potenciar mis redes →
             </a>
@@ -73,6 +74,7 @@ export default function Redes() {
                     transition={{ delay: 0.12 * i, duration: 0.5 }}
                     className={`relative ${p.h} overflow-hidden rounded-xl border border-white/[0.06] bg-gradient-to-br from-graphite-800 to-graphite-950`}
                   >
+                    <p.Icono className="absolute left-2.5 top-2.5 h-4 w-4 text-graphite-600" />
                     <span className="absolute bottom-2 left-2.5 font-mono text-[10px] uppercase tracking-wide text-graphite-400">
                       {p.tag}
                     </span>

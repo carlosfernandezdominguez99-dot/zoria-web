@@ -4,32 +4,41 @@ import { motion } from "framer-motion";
 import { fadeUp, viewport } from "@/lib/motion";
 
 const mensajes = [
-  "Atención cercana.",
-  "Soluciones claras.",
-  "Sin tecnicismos innecesarios.",
-  "Un único contacto para todo.",
+  "Atención cercana",
+  "Soluciones claras",
+  "Sin tecnicismos innecesarios",
+  "Un único contacto para todo",
 ];
 
 export default function Confianza() {
   return (
-    <section className="border-t border-white/[0.06] bg-graphite-950 py-20">
+    <section className="border-t border-white/[0.06] bg-graphite-950 py-24">
       <div className="mx-auto max-w-6xl px-6">
-        <motion.div
+        <motion.p
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="flex flex-wrap items-baseline gap-x-3 gap-y-2 text-balance text-xl font-medium tracking-tight text-graphite-100 sm:text-2xl"
+          className="font-mono text-xs uppercase tracking-wide text-graphite-400"
         >
+          Cómo trabajamos contigo
+        </motion.p>
+
+        <div className="mt-6 flex flex-wrap gap-3">
           {mensajes.map((m, i) => (
-            <span key={m} className="flex items-baseline gap-3">
-              <span>{m}</span>
-              {i < mensajes.length - 1 && (
-                <span className="text-zoria-blueLight/50">·</span>
-              )}
-            </span>
+            <motion.span
+              key={m}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={viewport}
+              transition={{ delay: i * 0.08 }}
+              className="rounded-full border-2 border-white/15 px-5 py-2.5 text-base font-bold tracking-tight text-white sm:text-lg"
+            >
+              {m}
+            </motion.span>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

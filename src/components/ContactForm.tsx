@@ -10,8 +10,10 @@ const servicios = [
   "Venta de móviles",
   "Venta de ordenadores / portátiles",
   "Diseño y creación de webs",
+  "Desarrollo de aplicaciones",
   "Tienda online",
   "Mantenimiento web",
+  "Redes / WiFi / tecnología",
   "Redes sociales",
   "Aún no lo sé / varios",
 ];

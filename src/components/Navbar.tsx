@@ -1,5 +1,7 @@
 "use client";
 
+import ZoriaLogo from "./ZoriaLogo";
+
 const links = [
   { href: "#reparaciones", label: "Reparaciones" },
   { href: "#web", label: "Web" },
@@ -9,9 +11,12 @@ const links = [
 export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-graphite-950/10 bg-zoria-blue/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="text-[15px] font-black tracking-tight text-graphite-950">
-          ZORIA
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-6">
+        <a href="#top" className="flex items-center gap-2.5 sm:gap-3">
+          <ZoriaLogo className="h-9 w-9 sm:h-10 sm:w-10" />
+          <span className="text-[22px] font-black leading-none tracking-tight text-graphite-950 sm:text-[26px]">
+            ZORIA
+          </span>
         </a>
 
         <nav className="hidden items-center gap-8 font-mono text-xs font-bold uppercase tracking-wide text-graphite-950/70 md:flex">

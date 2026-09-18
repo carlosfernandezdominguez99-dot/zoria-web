@@ -5,10 +5,10 @@ import { fadeUp, viewport } from "@/lib/motion";
 import { IconPhone, IconLaptop, IconDesktop, IconTablet } from "./icons";
 
 const dispositivos = [
-  { Icono: IconPhone, label: "Móviles" },
-  { Icono: IconLaptop, label: "Portátiles" },
-  { Icono: IconDesktop, label: "Ordenadores" },
-  { Icono: IconTablet, label: "Tablets" },
+  { Icono: IconPhone, label: "Móviles", nota: "Pantallas, baterías, venta" },
+  { Icono: IconLaptop, label: "Portátiles", nota: "Reparación y puesta a punto" },
+  { Icono: IconDesktop, label: "Ordenadores", nota: "Montaje, venta y soporte" },
+  { Icono: IconTablet, label: "Tablets", nota: "Diagnóstico y reparación" },
 ];
 
 const pasos = ["Diagnóstico", "Reparación", "Optimización", "Entrega"];
@@ -17,7 +17,7 @@ export default function Reparaciones() {
   return (
     <section id="reparaciones" className="border-t border-white/[0.06] bg-graphite-800 py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-16 md:grid-cols-[0.9fr,1.1fr]">
+        <div className="grid gap-16 md:grid-cols-[0.85fr,1.15fr] md:items-start">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -36,56 +36,48 @@ export default function Reparaciones() {
 
             <a
               href="#contacto"
-              className="mt-9 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-white underline decoration-zoria-blue decoration-2 underline-offset-4 transition-colors duration-200 hover:text-zoria-blueLight"
+              className="mt-9 inline-flex items-center gap-2 rounded-full border-2 border-zoria-blue bg-zoria-blue px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-graphite-950 shadow-[5px_5px_0_0_rgba(22,224,189,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_rgba(22,224,189,0.3)]"
             >
               Quiero reparar mi dispositivo →
             </a>
-          </motion.div>
 
-          <div>
-            <motion.ul
-              initial="hidden"
-              whileInView="show"
-              viewport={viewport}
-              className="divide-y divide-white/[0.06] border-y border-white/[0.06]"
-            >
-              {dispositivos.map((d, i) => (
-                <motion.li
-                  key={d.label}
-                  variants={fadeUp}
-                  transition={{ delay: i * 0.06 }}
-                  className="flex items-center justify-between py-5"
-                >
-                  <div className="flex items-center gap-4">
-                    <d.Icono className="h-5 w-5 text-graphite-400" />
-                    <span className="text-base font-medium text-graphite-100">
-                      {d.label}
-                    </span>
-                  </div>
-                  <span className="font-mono text-xs text-graphite-400">
-                    0{i + 1}
-                  </span>
-                </motion.li>
-              ))}
-            </motion.ul>
-
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={viewport}
-              className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-wide text-graphite-400"
-            >
+            <div className="mt-10 hidden flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-wide text-graphite-400 sm:flex">
               {pasos.map((p, i) => (
                 <span key={p} className="flex items-center gap-3">
-                  <span className={i === 0 ? "text-zoria-blueLight" : ""}>
-                    {p}
-                  </span>
+                  <span className={i === 0 ? "text-zoria-blueLight" : ""}>{p}</span>
                   {i < pasos.length - 1 && <span className="text-graphite-600">→</span>}
                 </span>
               ))}
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={viewport}
+            className="grid grid-cols-2 gap-4"
+          >
+            {dispositivos.map((d, i) => (
+              <motion.div
+                key={d.label}
+                variants={fadeUp}
+                transition={{ delay: i * 0.07 }}
+                whileHover={{ rotate: i % 2 === 0 ? -1.5 : 1.5, y: -4 }}
+                className="flex flex-col justify-between rounded-2xl border-2 border-white/10 bg-graphite-900 p-5 shadow-[5px_5px_0_0_rgba(0,0,0,0.4)] transition-shadow duration-200 hover:border-zoria-blue/40"
+              >
+                <div className="flex items-start justify-between">
+                  <d.Icono className="h-6 w-6 text-zoria-blueLight" />
+                  <span className="font-mono text-[10px] text-graphite-400">
+                    0{i + 1}
+                  </span>
+                </div>
+                <div className="mt-6">
+                  <p className="text-base font-black text-white">{d.label}</p>
+                  <p className="mt-1 text-xs text-graphite-400">{d.nota}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

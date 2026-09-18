@@ -30,18 +30,23 @@ const columnas = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] bg-graphite-950 py-16">
+    <footer className="border-t-2 border-white/10 bg-graphite-950 py-16">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
+        <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-4">
           <div className="flex flex-col gap-4">
-            <ZoriaLogo className="h-16 w-16" />
-            <span className="text-sm font-semibold text-white">
-              ZORIA · Soluciones digitales
+            <div className="flex items-center gap-2.5">
+              <ZoriaLogo className="h-10 w-10" />
+              <span className="text-2xl font-black tracking-tight text-white">
+                ZORIA
+              </span>
+            </div>
+            <span className="text-sm text-graphite-400">
+              Soluciones digitales de principio a fin.
             </span>
           </div>
           {columnas.map((c) => (
             <div key={c.titulo}>
-              <p className="text-xs font-medium uppercase tracking-wide text-graphite-400">
+              <p className="font-mono text-xs font-bold uppercase tracking-wide text-graphite-400">
                 {c.titulo}
               </p>
               <ul className="mt-4 space-y-2.5">
@@ -49,7 +54,7 @@ export default function Footer() {
                   <li key={l.label}>
                     <a
                       href={l.href}
-                      className="text-sm text-graphite-100 transition-colors hover:text-zoria-blueLight"
+                      className="text-sm font-medium text-graphite-100 transition-colors hover:text-zoria-blueLight"
                     >
                       {l.label}
                     </a>
@@ -60,7 +65,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 border-t border-white/[0.06] pt-6 text-xs text-graphite-400">
+        <div className="mt-14 border-t border-white/[0.06] pt-6 font-mono text-xs text-graphite-400">
           © {new Date().getFullYear()} Zoria. Todos los derechos reservados.
         </div>
       </div>
