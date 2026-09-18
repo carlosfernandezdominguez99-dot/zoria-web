@@ -35,7 +35,7 @@ export default function Hero() {
           }}
         />
         <div
-          className="absolute right-[-6%] top-[6%] h-[560px] w-[560px] rounded-full bg-zoria-blue/[0.07] blur-[150px]"
+          className="absolute right-[-6%] top-[6%] h-[620px] w-[620px] rounded-full bg-zoria-blue/[0.14] blur-[150px]"
           aria-hidden="true"
         />
         <div
@@ -60,7 +60,7 @@ export default function Hero() {
           priority
           quality={100}
           sizes="720px"
-          className="object-contain opacity-[0.16]"
+          className="object-contain opacity-[0.28]"
           style={{
             maskImage:
               "linear-gradient(120deg, black 30%, transparent 78%)",

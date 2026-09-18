@@ -15,7 +15,7 @@ const pasos = ["Diagnóstico", "Reparación", "Optimización", "Entrega"];
 
 export default function Reparaciones() {
   return (
-    <section id="reparaciones" className="border-t border-white/[0.06] bg-graphite-900 py-28">
+    <section id="reparaciones" className="border-t border-white/[0.06] bg-graphite-800 py-28">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-16 md:grid-cols-[0.9fr,1.1fr]">
           <motion.div

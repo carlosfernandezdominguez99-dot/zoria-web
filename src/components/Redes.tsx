@@ -13,7 +13,7 @@ const posts = [
 
 export default function Redes() {
   return (
-    <section id="redes" className="border-t border-white/[0.06] bg-graphite-900 py-28">
+    <section id="redes" className="border-t border-white/[0.06] bg-graphite-800 py-28">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-16 md:grid-cols-2 md:items-center">
           <motion.div

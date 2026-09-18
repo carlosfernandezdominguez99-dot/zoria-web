@@ -29,7 +29,7 @@ const puertas = [
 
 export default function Puertas() {
   return (
-    <section className="border-t border-white/[0.06] bg-graphite-950 py-28">
+    <section className="border-t border-white/[0.06] bg-graphite-900 py-28">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           variants={fadeUp}
@@ -56,10 +56,14 @@ export default function Puertas() {
               viewport={viewport}
               transition={{ delay: i * 0.08 }}
               href={p.href}
-              className={`group relative flex flex-col justify-between bg-graphite-950 p-8 transition-colors duration-400 hover:bg-graphite-900 sm:p-10 ${
+              className={`group relative flex flex-col justify-between overflow-hidden bg-graphite-950 p-8 transition-colors duration-400 hover:bg-gradient-to-br hover:from-zoria-blue/[0.14] hover:to-graphite-950 sm:p-10 ${
                 p.grande ? "md:row-span-2 md:min-h-[420px]" : "md:min-h-[204px]"
               }`}
             >
+              <span
+                className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-zoria-blue transition-transform duration-400 group-hover:scale-x-100"
+                aria-hidden="true"
+              />
               <div className="flex items-start justify-between">
                 <span className="font-mono text-xs text-graphite-400">
                   {p.numero}

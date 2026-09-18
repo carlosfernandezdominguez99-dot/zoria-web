@@ -45,7 +45,7 @@ export default function Navbar() {
 
         <a
           href="#contacto"
-          className="group inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-semibold text-graphite-950 transition-all duration-400 hover:bg-zoria-blue hover:text-graphite-950"
+          className="group inline-flex items-center gap-1.5 rounded-full bg-zoria-blue px-4 py-2 text-sm font-semibold text-graphite-950 transition-all duration-400 hover:shadow-glow"
         >
           Hablamos
           <span className="transition-transform duration-400 group-hover:translate-x-0.5">
