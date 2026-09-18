@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function ZoriaLogo({ className = "h-9 w-9" }: { className?: string }) {
+export default function ZoriaLogo({ className = "h-8 w-8" }: { className?: string }) {
   return (
     <Image
       src="/logo.png"

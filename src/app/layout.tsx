@@ -1,10 +1,61 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const SITE_URL = "https://zoria.es";
+
 export const metadata: Metadata = {
-  title: "Zoria — Soluciones digitales",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Zoria — Reparación, webs y redes sociales",
+    template: "%s — Zoria",
+  },
   description:
-    "Zoria: reparación y venta de móviles, diseño y mantenimiento web, redes sociales, contenido, automatización e IA para pymes y negocios locales.",
+    "Zoria repara móviles, portátiles, ordenadores y tablets, crea páginas web y tiendas online, y gestiona redes sociales para negocios locales. Un solo sitio para todo lo digital.",
+  keywords: [
+    "reparación móviles",
+    "reparación ordenadores",
+    "reparación portátiles",
+    "páginas web",
+    "tiendas online",
+    "gestión redes sociales",
+    "Zoria",
+  ],
+  openGraph: {
+    title: "Zoria — Reparación, webs y redes sociales",
+    description:
+      "Reparamos tus dispositivos, creamos tu presencia digital y hacemos que tu negocio avance.",
+    url: SITE_URL,
+    siteName: "Zoria",
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zoria — Reparación, webs y redes sociales",
+    description:
+      "Reparamos tus dispositivos, creamos tu presencia digital y hacemos que tu negocio avance.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Zoria",
+  description:
+    "Reparación de dispositivos, creación de páginas web y gestión de redes sociales para negocios locales.",
+  url: SITE_URL,
+  areaServed: "ES",
 };
 
 export default function RootLayout({
@@ -13,8 +64,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className="font-sans antialiased">{children}</body>
+    <html lang="es" className={inter.variable}>
+      <body className="bg-graphite-950 font-sans text-graphite-100 antialiased">
+        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </body>
     </html>
   );
 }

@@ -5,14 +5,14 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from "@/lib/supabase";
 
 const servicios = [
   "Reparación de móviles",
-  "Compra/venta de móviles",
-  "Reparación y montaje/venta de ordenadores",
+  "Reparación de portátiles / ordenadores",
+  "Reparación de tablets",
+  "Venta de móviles",
+  "Venta de ordenadores / portátiles",
   "Diseño y creación de webs",
+  "Tienda online",
   "Mantenimiento web",
   "Redes sociales",
-  "Creación de contenido",
-  "Automatización de procesos",
-  "IA aplicada a negocios",
   "Aún no lo sé / varios",
 ];
 
@@ -58,13 +58,16 @@ export default function ContactForm() {
     }
   }
 
+  const inputClass =
+    "w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-graphite-400 outline-none transition-colors duration-400 focus:border-zoria-blue";
+
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-zoria-turquoise/30 bg-zoria-mist p-8 text-center">
-        <p className="text-lg font-semibold text-zoria-ink">
+      <div className="rounded-2xl border border-zoria-blue/30 bg-zoria-blue/[0.06] p-8 text-center">
+        <p className="text-lg font-semibold text-white">
           ¡Gracias! Hemos recibido tu solicitud.
         </p>
-        <p className="mt-2 text-sm text-zoria-ink/60">
+        <p className="mt-2 text-sm text-graphite-400">
           Te contactaremos en breve para hablar de tu proyecto.
         </p>
       </div>
@@ -75,58 +78,41 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="grid gap-4">
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-zoria-ink">
+          <label className="mb-1.5 block text-xs font-medium text-graphite-400">
             Nombre
           </label>
-          <input
-            required
-            name="nombre"
-            type="text"
-            className="w-full rounded-xl border border-zoria-ink/10 bg-white px-4 py-3 text-sm text-zoria-ink outline-none transition focus:border-zoria-turquoise"
-            placeholder="Tu nombre"
-          />
+          <input required name="nombre" type="text" className={inputClass} placeholder="Tu nombre" />
         </div>
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-zoria-ink">
+          <label className="mb-1.5 block text-xs font-medium text-graphite-400">
             Email
           </label>
-          <input
-            required
-            name="email"
-            type="email"
-            className="w-full rounded-xl border border-zoria-ink/10 bg-white px-4 py-3 text-sm text-zoria-ink outline-none transition focus:border-zoria-turquoise"
-            placeholder="tu@email.com"
-          />
+          <input required name="email" type="email" className={inputClass} placeholder="tu@email.com" />
         </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-zoria-ink">
+          <label className="mb-1.5 block text-xs font-medium text-graphite-400">
             Teléfono (opcional)
           </label>
-          <input
-            name="telefono"
-            type="tel"
-            className="w-full rounded-xl border border-zoria-ink/10 bg-white px-4 py-3 text-sm text-zoria-ink outline-none transition focus:border-zoria-turquoise"
-            placeholder="600 000 000"
-          />
+          <input name="telefono" type="tel" className={inputClass} placeholder="600 000 000" />
         </div>
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-zoria-ink">
+          <label className="mb-1.5 block text-xs font-medium text-graphite-400">
             Servicio que te interesa
           </label>
           <select
             required
             name="servicio_interes"
             defaultValue=""
-            className="w-full rounded-xl border border-zoria-ink/10 bg-white px-4 py-3 text-sm text-zoria-ink outline-none transition focus:border-zoria-turquoise"
+            className={`${inputClass} appearance-none`}
           >
-            <option value="" disabled>
+            <option value="" disabled className="bg-graphite-900">
               Selecciona una opción
             </option>
             {servicios.map((s) => (
-              <option key={s} value={s}>
+              <option key={s} value={s} className="bg-graphite-900">
                 {s}
               </option>
             ))}
@@ -135,27 +121,22 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-zoria-ink">
+        <label className="mb-1.5 block text-xs font-medium text-graphite-400">
           Cuéntanos tu proyecto
         </label>
-        <textarea
-          name="mensaje"
-          rows={4}
-          className="w-full rounded-xl border border-zoria-ink/10 bg-white px-4 py-3 text-sm text-zoria-ink outline-none transition focus:border-zoria-turquoise"
-          placeholder="¿Qué necesitas?"
-        />
+        <textarea name="mensaje" rows={4} className={inputClass} placeholder="¿Qué necesitas?" />
       </div>
 
       <button
         type="submit"
         disabled={status === "loading"}
-        className="mt-2 rounded-full bg-zoria-turquoise px-7 py-3.5 text-sm font-semibold text-zoria-ink transition hover:bg-zoria-turquoiseDark disabled:opacity-60"
+        className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-zoria-blue px-7 py-3.5 text-sm font-semibold text-white shadow-glow transition-all duration-400 hover:-translate-y-0.5 disabled:opacity-60"
       >
-        {status === "loading" ? "Enviando..." : "Enviar solicitud"}
+        {status === "loading" ? "Enviando..." : "Hablamos →"}
       </button>
 
       {status === "error" && (
-        <p className="text-sm text-red-500">
+        <p className="text-sm text-red-400">
           No se ha podido enviar. Inténtalo de nuevo en unos minutos.
         </p>
       )}
