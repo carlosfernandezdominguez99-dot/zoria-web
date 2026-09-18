@@ -78,19 +78,19 @@ export default function ContactForm() {
     }
   }
 
-  const labelClass = "mb-2 block font-mono text-xs font-bold uppercase tracking-wide text-graphite-400";
+  const labelClass = "mb-2 block font-mono text-xs font-bold uppercase tracking-wide text-graphite-950/40";
   const inputClass =
-    "w-full rounded-2xl border-2 border-white/15 bg-white/[0.04] px-4 py-3.5 text-sm font-medium text-white placeholder:text-graphite-400 outline-none transition-colors duration-200 focus:border-zoria-blue";
+    "w-full rounded-2xl border-2 border-graphite-950/15 bg-[#F4F6F5] px-4 py-3.5 text-sm font-medium text-graphite-950 placeholder:text-graphite-950/35 outline-none transition-colors duration-200 focus:border-zoria-blue";
 
   if (status === "success") {
     return (
-      <div className="rounded-[24px] border-2 border-zoria-blue bg-zoria-blue/[0.08] p-8 text-center shadow-[6px_6px_0_0_rgba(22,224,189,0.2)]">
-        <p className="text-lg font-black text-white">
+      <div className="rounded-[28px] border-2 border-graphite-950 bg-zoria-blue p-8 text-center shadow-[10px_10px_0_0_rgba(10,13,18,0.9)]">
+        <p className="text-lg font-black text-graphite-950">
           {canal === "whatsapp" && WHATSAPP_NUMBER
             ? "¡Te hemos abierto WhatsApp!"
             : "¡Gracias! Hemos recibido tu solicitud."}
         </p>
-        <p className="mt-2 text-sm text-graphite-400">
+        <p className="mt-2 text-sm text-graphite-950/70">
           {canal === "whatsapp" && WHATSAPP_NUMBER
             ? "Sigue la conversación allí — te respondemos nosotros mismos."
             : "Te contactamos nosotros mismos, sin bots ni esperas."}
@@ -102,7 +102,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid gap-6 rounded-[28px] border-2 border-white/15 bg-white/[0.03] p-6 shadow-[8px_8px_0_0_rgba(22,224,189,0.12)] sm:p-8"
+      className="grid gap-6 rounded-[28px] border-2 border-graphite-950 bg-white p-6 shadow-[10px_10px_0_0_rgba(10,13,18,0.9)] sm:p-8"
     >
       {/* Selector de canal */}
       <div>
@@ -112,10 +112,10 @@ export default function ContactForm() {
             type="button"
             onClick={() => WHATSAPP_NUMBER && setCanal("whatsapp")}
             disabled={!WHATSAPP_NUMBER}
-            className={`rounded-full border-2 px-4 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-40 ${
+            className={`rounded-full border-2 border-graphite-950 px-4 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-40 ${
               canal === "whatsapp"
-                ? "border-zoria-blue bg-zoria-blue text-graphite-950 shadow-[3px_3px_0_0_rgba(22,224,189,0.3)]"
-                : "border-white/15 text-white hover:border-white/30"
+                ? "bg-zoria-blue text-graphite-950 shadow-[3px_3px_0_0_rgba(10,13,18,0.9)]"
+                : "bg-white text-graphite-950/50 hover:text-graphite-950"
             }`}
           >
             WhatsApp{!WHATSAPP_NUMBER && " (pronto)"}
@@ -123,10 +123,10 @@ export default function ContactForm() {
           <button
             type="button"
             onClick={() => setCanal("email")}
-            className={`rounded-full border-2 px-4 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-200 ${
+            className={`rounded-full border-2 border-graphite-950 px-4 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-200 ${
               canal === "email"
-                ? "border-zoria-blue bg-zoria-blue text-graphite-950 shadow-[3px_3px_0_0_rgba(22,224,189,0.3)]"
-                : "border-white/15 text-white hover:border-white/30"
+                ? "bg-zoria-blue text-graphite-950 shadow-[3px_3px_0_0_rgba(10,13,18,0.9)]"
+                : "bg-white text-graphite-950/50 hover:text-graphite-950"
             }`}
           >
             Correo
@@ -162,15 +162,15 @@ export default function ContactForm() {
             return (
               <label
                 key={i}
-                className={`flex cursor-pointer items-center gap-2 rounded-full border-2 px-3.5 py-2 text-xs font-bold transition-all duration-200 ${
+                className={`flex cursor-pointer items-center gap-2 rounded-full border-2 border-graphite-950 px-3.5 py-2 text-xs font-bold transition-all duration-200 ${
                   activo
-                    ? "border-zoria-blue bg-zoria-blue text-graphite-950"
-                    : "border-white/15 bg-transparent text-white hover:border-white/35"
+                    ? "bg-zoria-blue text-graphite-950"
+                    : "bg-[#F4F6F5] text-graphite-950/60 hover:text-graphite-950"
                 }`}
               >
                 <span
-                  className={`flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full border-2 ${
-                    activo ? "border-graphite-950 bg-graphite-950" : "border-white/30"
+                  className={`flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full border-2 border-graphite-950 ${
+                    activo ? "bg-graphite-950" : "bg-white"
                   }`}
                 >
                   {activo && (
@@ -200,7 +200,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="mt-1 inline-flex items-center justify-center gap-2 rounded-full border-2 border-zoria-blue bg-zoria-blue px-7 py-4 text-sm font-bold uppercase tracking-wide text-graphite-950 shadow-[5px_5px_0_0_rgba(22,224,189,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_rgba(22,224,189,0.3)] disabled:opacity-60"
+        className="mt-1 inline-flex items-center justify-center gap-2 rounded-full border-2 border-graphite-950 bg-graphite-950 px-7 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-[5px_5px_0_0_rgba(10,13,18,0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_rgba(10,13,18,0.25)] disabled:opacity-60"
       >
         {status === "loading"
           ? "Enviando..."
@@ -210,7 +210,7 @@ export default function ContactForm() {
       </button>
 
       {status === "error" && (
-        <p className="text-sm font-bold text-red-400">
+        <p className="text-sm font-bold text-red-500">
           No se ha podido enviar. Inténtalo de nuevo en unos minutos.
         </p>
       )}
