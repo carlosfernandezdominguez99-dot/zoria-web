@@ -14,10 +14,6 @@ export default function Diferencial() {
       >
         ZORIA
       </span>
-      <div
-        className="pointer-events-none absolute -left-24 -top-24 h-[420px] w-[420px] rounded-full bg-white/10 blur-[120px]"
-        aria-hidden="true"
-      />
 
       <div className="relative mx-auto max-w-3xl px-6 text-center">
         <motion.span
@@ -25,7 +21,7 @@ export default function Diferencial() {
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="font-mono text-xs uppercase tracking-wide text-graphite-950/70"
+          className="inline-flex items-center rounded-full border-2 border-graphite-950 bg-white px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-wide text-graphite-950"
         >
           Un solo sitio. Todo lo digital.
         </motion.span>
@@ -35,7 +31,7 @@ export default function Diferencial() {
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="mt-5 text-balance text-2xl font-black leading-snug tracking-tight text-graphite-950 sm:text-4xl"
+          className="mt-6 text-balance text-2xl font-black leading-snug tracking-tight text-graphite-950 sm:text-4xl"
         >
           Zoria no es otra tienda de informática.
         </motion.p>
@@ -52,22 +48,29 @@ export default function Diferencial() {
           cambiar de proveedor.
         </motion.p>
 
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={viewport}
-          className="mt-10 flex items-center justify-center gap-4 text-lg font-bold sm:text-2xl"
-        >
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           {pasos.map((p, i) => (
-            <span key={p} className="flex items-center gap-4 text-graphite-950">
+            <motion.span
+              key={p}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={viewport}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -3, rotate: i % 2 === 0 ? -2 : 2 }}
+              className={`inline-flex items-center gap-2 rounded-full border-2 border-graphite-950 px-6 py-3 text-base font-black tracking-tight shadow-[4px_4px_0_0_rgba(10,13,18,0.9)] sm:text-lg ${
+                i === 1
+                  ? "bg-graphite-950 text-white"
+                  : "bg-white text-graphite-950"
+              }`}
+            >
               {p}
               {i < pasos.length - 1 && (
-                <span className="text-graphite-950/40">→</span>
+                <span className="text-graphite-950/30">→</span>
               )}
-            </span>
+            </motion.span>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

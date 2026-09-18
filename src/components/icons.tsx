@@ -121,6 +121,16 @@ export function IconHeart({ className = base }: IconProps) {
   );
 }
 
+export function IconUsers({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} stroke="currentColor" strokeWidth="1.6">
+      <circle cx="9" cy="8.5" r="3" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.5 5.3a3 3 0 010 5.9M18 19c-.4-2.2-1.4-3.7-2.9-4.5" />
+    </svg>
+  );
+}
+
 export function IconImage({ className = base }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} stroke="currentColor" strokeWidth="1.6">

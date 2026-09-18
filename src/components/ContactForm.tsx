@@ -78,13 +78,14 @@ export default function ContactForm() {
     }
   }
 
+  const labelClass = "mb-2 block font-mono text-xs font-bold uppercase tracking-wide text-graphite-400";
   const inputClass =
-    "w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-graphite-400 outline-none transition-colors duration-400 focus:border-zoria-blue";
+    "w-full rounded-2xl border-2 border-white/15 bg-white/[0.04] px-4 py-3.5 text-sm font-medium text-white placeholder:text-graphite-400 outline-none transition-colors duration-200 focus:border-zoria-blue";
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-zoria-blue/30 bg-zoria-blue/[0.06] p-8 text-center">
-        <p className="text-lg font-semibold text-white">
+      <div className="rounded-[24px] border-2 border-zoria-blue bg-zoria-blue/[0.08] p-8 text-center shadow-[6px_6px_0_0_rgba(22,224,189,0.2)]">
+        <p className="text-lg font-black text-white">
           {canal === "whatsapp" && WHATSAPP_NUMBER
             ? "¡Te hemos abierto WhatsApp!"
             : "¡Gracias! Hemos recibido tu solicitud."}
@@ -99,20 +100,21 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-5">
+    <form
+      onSubmit={handleSubmit}
+      className="grid gap-6 rounded-[28px] border-2 border-white/15 bg-white/[0.03] p-6 shadow-[8px_8px_0_0_rgba(22,224,189,0.12)] sm:p-8"
+    >
       {/* Selector de canal */}
       <div>
-        <p className="mb-2 text-xs font-medium text-graphite-400">
-          ¿Cómo prefieres que te contactemos?
-        </p>
+        <p className={labelClass}>¿Cómo prefieres que te contactemos?</p>
         <div className="grid grid-cols-2 gap-2.5">
           <button
             type="button"
             onClick={() => WHATSAPP_NUMBER && setCanal("whatsapp")}
             disabled={!WHATSAPP_NUMBER}
-            className={`rounded-xl border-2 px-4 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-40 ${
+            className={`rounded-full border-2 px-4 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-40 ${
               canal === "whatsapp"
-                ? "border-zoria-blue bg-zoria-blue text-graphite-950"
+                ? "border-zoria-blue bg-zoria-blue text-graphite-950 shadow-[3px_3px_0_0_rgba(22,224,189,0.3)]"
                 : "border-white/15 text-white hover:border-white/30"
             }`}
           >
@@ -121,9 +123,9 @@ export default function ContactForm() {
           <button
             type="button"
             onClick={() => setCanal("email")}
-            className={`rounded-xl border-2 px-4 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-200 ${
+            className={`rounded-full border-2 px-4 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-200 ${
               canal === "email"
-                ? "border-zoria-blue bg-zoria-blue text-graphite-950"
+                ? "border-zoria-blue bg-zoria-blue text-graphite-950 shadow-[3px_3px_0_0_rgba(22,224,189,0.3)]"
                 : "border-white/15 text-white hover:border-white/30"
             }`}
           >
@@ -134,16 +136,12 @@ export default function ContactForm() {
 
       <div className={`grid gap-4 ${canal === "email" ? "sm:grid-cols-2" : ""}`}>
         <div>
-          <label className="mb-1.5 block text-xs font-medium text-graphite-400">
-            Nombre
-          </label>
+          <label className={labelClass}>Nombre</label>
           <input required name="nombre" type="text" className={inputClass} placeholder="Tu nombre" />
         </div>
         {canal === "email" && (
           <div>
-            <label className="mb-1.5 block text-xs font-medium text-graphite-400">
-              Email
-            </label>
+            <label className={labelClass}>Email</label>
             <input required name="email" type="email" className={inputClass} placeholder="tu@email.com" />
           </div>
         )}
@@ -151,37 +149,33 @@ export default function ContactForm() {
 
       {canal === "email" && (
         <div>
-          <label className="mb-1.5 block text-xs font-medium text-graphite-400">
-            Teléfono (opcional)
-          </label>
+          <label className={labelClass}>Teléfono (opcional)</label>
           <input name="telefono" type="tel" className={inputClass} placeholder="600 000 000" />
         </div>
       )}
 
       <div>
-        <p className="mb-2 text-xs font-medium text-graphite-400">
-          ¿Qué necesitas? (marca lo que quieras)
-        </p>
-        <div className="grid gap-2 sm:grid-cols-2">
+        <p className={labelClass}>¿Qué necesitas? (marca lo que quieras)</p>
+        <div className="flex flex-wrap gap-2">
           {intereses.map((i) => {
             const activo = seleccionados.includes(i);
             return (
               <label
                 key={i}
-                className={`flex cursor-pointer items-center gap-2.5 rounded-xl border px-3.5 py-2.5 text-sm transition-colors duration-200 ${
+                className={`flex cursor-pointer items-center gap-2 rounded-full border-2 px-3.5 py-2 text-xs font-bold transition-all duration-200 ${
                   activo
-                    ? "border-zoria-blue bg-zoria-blue/10 text-white"
-                    : "border-white/[0.08] bg-white/[0.03] text-graphite-100 hover:border-white/20"
+                    ? "border-zoria-blue bg-zoria-blue text-graphite-950"
+                    : "border-white/15 bg-transparent text-white hover:border-white/35"
                 }`}
               >
                 <span
-                  className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 ${
-                    activo ? "border-zoria-blue bg-zoria-blue" : "border-white/20"
+                  className={`flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full border-2 ${
+                    activo ? "border-graphite-950 bg-graphite-950" : "border-white/30"
                   }`}
                 >
                   {activo && (
-                    <svg viewBox="0 0 12 10" className="h-2.5 w-2.5" fill="none">
-                      <path d="M1 5l3.2 3.2L11 1" stroke="#0A0D12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <svg viewBox="0 0 12 10" className="h-2 w-2" fill="none">
+                      <path d="M1 5l3.2 3.2L11 1" stroke="#16E0BD" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   )}
                 </span>
@@ -199,9 +193,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="mb-1.5 block text-xs font-medium text-graphite-400">
-          Cuéntanos brevemente qué necesitas
-        </label>
+        <label className={labelClass}>Cuéntanos brevemente qué necesitas</label>
         <textarea name="mensaje" rows={3} className={inputClass} placeholder="Opcional" />
       </div>
 
@@ -218,7 +210,7 @@ export default function ContactForm() {
       </button>
 
       {status === "error" && (
-        <p className="text-sm text-red-400">
+        <p className="text-sm font-bold text-red-400">
           No se ha podido enviar. Inténtalo de nuevo en unos minutos.
         </p>
       )}
