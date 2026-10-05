@@ -35,9 +35,13 @@ export default function CookieBanner() {
             Aquí reparamos móviles, no tu privacidad.
           </p>
           <p className="mt-2 text-sm text-graphite-950/60">
-            Usamos alguna cookie para que la web funcione como toca. La
-            política legal en condiciones está al caer — mientras tanto, ya
-            sabes.
+            No usamos cookies de analítica ni de publicidad, solo lo
+            estrictamente necesario para que la web funcione. Más detalles en
+            la{" "}
+            <a href="/cookies" className="font-bold text-graphite-950 underline underline-offset-2">
+              política de cookies
+            </a>
+            .
           </p>
 
           <div className="mt-4 flex flex-wrap gap-2.5">

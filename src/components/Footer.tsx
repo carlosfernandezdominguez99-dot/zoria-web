@@ -21,9 +21,9 @@ const columnas = [
   {
     titulo: "Legal",
     links: [
-      { label: "Aviso legal", href: "#" },
-      { label: "Privacidad", href: "#" },
-      { label: "Cookies", href: "#" },
+      { label: "Aviso legal", href: "/aviso-legal" },
+      { label: "Privacidad", href: "/privacidad" },
+      { label: "Cookies", href: "/cookies" },
     ],
   },
 ];

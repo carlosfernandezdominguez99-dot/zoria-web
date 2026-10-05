@@ -44,3 +44,46 @@ body {
 .text-balance {
   text-wrap: balance;
 }
+
+.legal-prose h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: #07080a;
+}
+
+.legal-prose h2:first-child {
+  margin-top: 0;
+}
+
+.legal-prose p {
+  margin-top: 0.9rem;
+  color: rgba(7, 8, 10, 0.65);
+  line-height: 1.65;
+}
+
+.legal-prose ul {
+  margin-top: 0.9rem;
+  padding-left: 1.25rem;
+  color: rgba(7, 8, 10, 0.65);
+  line-height: 1.65;
+  list-style: disc;
+}
+
+.legal-prose li {
+  margin-top: 0.4rem;
+}
+
+.legal-prose strong {
+  color: #07080a;
+  font-weight: 700;
+}
+
+.legal-prose a {
+  color: #0fa98f;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
