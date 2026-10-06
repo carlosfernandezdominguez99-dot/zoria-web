@@ -7,7 +7,7 @@ export const TITULAR = {
   nif: "30215255V",
   domicilio: "C/ España, 3, Cortelazor, 21208 (Huelva), España",
   email: "zoria@gmail.com",
-  telefono: "", // rellena cuando tengas uno público
+  telefono: "614 15 12 13",
   nombreComercial: "ZORIA",
   actividad: "Prestación de servicios digitales (reparación de dispositivos, desarrollo web y gestión de redes sociales) como autónomo",
   fechaAlta: "1 de octubre de 2026",

@@ -20,8 +20,9 @@ export default function AvisoLegalPage() {
           <strong>{TITULAR.nombre}</strong>, con NIF{" "}
           <strong>{TITULAR.nif}</strong>, actuando bajo el nombre comercial{" "}
           <strong>{TITULAR.nombreComercial}</strong>, con domicilio en{" "}
-          {TITULAR.domicilio}, y dirección de contacto{" "}
-          <a href={`mailto:${TITULAR.email}`}>{TITULAR.email}</a>.
+          {TITULAR.domicilio}, dirección de contacto{" "}
+          <a href={`mailto:${TITULAR.email}`}>{TITULAR.email}</a> y teléfono
+          de contacto {TITULAR.telefono}.
         </p>
         <p>
           Actividad: {TITULAR.actividad}, dado de alta como trabajador
