@@ -7,13 +7,22 @@ export default function CookieBanner() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
+    // El aviso es solo informativo (no hay cookies que aceptar o rechazar): se muestra una vez.
+    try {
+      if (window.localStorage.getItem("zoria-aviso-cookies") === "visto") return;
+    } catch {
+      /* sin almacenamiento: se muestra igualmente */
+    }
     const t = setTimeout(() => setShow(true), 700);
     return () => clearTimeout(t);
   }, []);
 
-  // De momento cualquier botón hace lo mismo: cerrar. Cuando tengamos la
-  // política de cookies/legal definitiva, aquí se diferenciará cada opción.
   function cerrar() {
+    try {
+      window.localStorage.setItem("zoria-aviso-cookies", "visto");
+    } catch {
+      /* sin almacenamiento */
+    }
     setShow(false);
   }
 
@@ -49,13 +58,7 @@ export default function CookieBanner() {
               onClick={cerrar}
               className="rounded-full border-2 border-graphite-950 bg-graphite-950 px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white transition-transform duration-200 hover:-translate-y-0.5"
             >
-              Aceptar todo
-            </button>
-            <button
-              onClick={cerrar}
-              className="rounded-full border-2 border-graphite-950 px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-graphite-950 transition-colors duration-200 hover:bg-graphite-950 hover:text-white"
-            >
-              Rechazar
+              Entendido
             </button>
           </div>
         </motion.div>
