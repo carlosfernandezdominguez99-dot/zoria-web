@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from "@/lib/supabase";
 import { WHATSAPP_NUMBER } from "@/lib/config";
 
@@ -19,6 +19,8 @@ export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [canal, setCanal] = useState<Canal>(WHATSAPP_NUMBER ? "whatsapp" : "email");
   const [seleccionados, setSeleccionados] = useState<string[]>([]);
+  // Momento en que se mostró el formulario: un envío en menos de 2 segundos es de un bot.
+  const abiertoEn = useRef(Date.now());
 
   function toggleInteres(valor: string) {
     setSeleccionados((prev) =>
@@ -35,19 +37,16 @@ export default function ContactForm() {
     const mensaje = String(data.get("mensaje") || "");
     const interesTexto = seleccionados.length ? seleccionados.join(", ") : "Sin especificar";
 
-    // Campo trampa: las personas no lo ven; si viene relleno es un envío automático y se descarta.
-    if (String(data.get("empresa_web") || "")) {
-      setStatus("success");
-      form.reset();
-      setSeleccionados([]);
-      return;
-    }
+    if (Date.now() - abiertoEn.current < 2000) return;
 
     if (canal === "whatsapp" && WHATSAPP_NUMBER) {
-      const texto = `Hola Zoria, soy ${nombre || "un cliente"}.%0AMe interesa: ${interesTexto}.${
-        mensaje ? `%0A${mensaje}` : ""
-      }`;
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${texto}`, "_blank");
+      const texto = encodeURIComponent(
+        `Hola Zoria, soy ${nombre || "un cliente"}.\nMe interesa: ${interesTexto}.${mensaje ? `\n${mensaje}` : ""}`
+      );
+      const enlace = `https://wa.me/${WHATSAPP_NUMBER}?text=${texto}`;
+      // Si el navegador bloquea la ventana nueva (pasa en algunos móviles), se abre en la misma.
+      const ventana = window.open(enlace, "_blank");
+      if (!ventana) window.location.href = enlace;
       setStatus("success");
       form.reset();
       setSeleccionados([]);
@@ -92,7 +91,7 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-[28px] border-2 border-graphite-950 bg-zoria-blue p-8 text-center shadow-[10px_10px_0_0_rgba(10,13,18,0.9)]">
+      <div className="rounded-[28px] border-2 border-graphite-950 bg-white p-8 text-center shadow-[10px_10px_0_0_rgba(10,13,18,0.9)]">
         <p className="text-lg font-black text-graphite-950">
           {canal === "whatsapp" && WHATSAPP_NUMBER
             ? "¡Te hemos abierto WhatsApp!"
@@ -205,12 +204,6 @@ export default function ContactForm() {
         <textarea name="mensaje" rows={3} maxLength={4000} className={inputClass} placeholder="Opcional" />
       </div>
 
-      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-        <label>
-          No rellenar
-          <input name="empresa_web" type="text" tabIndex={-1} autoComplete="off" />
-        </label>
-      </div>
 
       <button
         type="submit"
