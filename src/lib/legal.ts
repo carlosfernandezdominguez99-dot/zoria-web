@@ -13,4 +13,4 @@ export const TITULAR = {
   fechaAlta: "1 de octubre de 2026",
 };
 
-export const SITE_URL = "https://zoria.es";
+export const SITE_URL = "https://zoriadigital.es";

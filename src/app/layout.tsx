@@ -22,7 +22,7 @@ const hand = Caveat({
   weight: ["600", "700"],
 });
 
-const SITE_URL = "https://zoria.es";
+const SITE_URL = "https://zoriadigital.es";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

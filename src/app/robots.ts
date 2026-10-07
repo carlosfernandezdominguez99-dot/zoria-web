@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://zoria.es/sitemap.xml",
+    sitemap: "https://zoriadigital.es/sitemap.xml",
   };
 }
