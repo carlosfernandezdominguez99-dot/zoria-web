@@ -1,4 +1,5 @@
 import ZoriaLogo from "./ZoriaLogo";
+import { WHATSAPP_NUMBER } from "@/lib/config";
 
 const columnas = [
   {
@@ -12,10 +13,9 @@ const columnas = [
   {
     titulo: "Contacto",
     links: [
-      { label: "WhatsApp", href: "#contacto" },
-      { label: "Instagram", href: "#" },
-      { label: "TikTok", href: "#" },
-      { label: "Ubicación", href: "#" },
+      { label: "WhatsApp", href: `https://wa.me/${WHATSAPP_NUMBER}` },
+      { label: "Instagram", href: "https://www.instagram.com/zoriadigital" },
+      { label: "TikTok", href: "https://www.tiktok.com/@zoria8544" },
     ],
   },
   {
@@ -56,6 +56,9 @@ export default function Footer() {
                   <li key={l.label}>
                     <a
                       href={l.href}
+                      {...(l.href.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                       className="text-sm font-bold text-graphite-950/70 transition-colors duration-200 hover:text-zoria-blueDim"
                     >
                       {l.label}
