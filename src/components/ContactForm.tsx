@@ -218,8 +218,8 @@ export default function ContactForm() {
       </button>
 
       <p className="text-xs leading-relaxed text-graphite-950/50">
-        Usaremos tus datos solo para responder a tu solicitud. Responsable: Carlos Fernández
-        Domínguez (ZORIA). Puedes ejercer tus derechos escribiendo al email indicado en la{" "}
+        Usaremos tus datos solo para responder a tu solicitud. Responsable: ZORIA. Puedes
+        ejercer tus derechos escribiendo al email indicado en la{" "}
         <a href="/privacidad" className="font-bold text-graphite-950 underline underline-offset-2">
           política de privacidad
         </a>

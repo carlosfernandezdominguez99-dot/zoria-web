@@ -6,7 +6,7 @@ export const TITULAR = {
   nombre: "Carlos Fernández Domínguez",
   nif: "30215255V",
   domicilio: "C/ España, 3, Cortelazor, 21208 (Huelva), España",
-  email: "zoria@gmail.com",
+  email: "zoriadigital@gmail.com",
   telefono: "614 15 12 13",
   nombreComercial: "ZORIA",
   actividad: "Prestación de servicios digitales (reparación de dispositivos, desarrollo web y gestión de redes sociales) como autónomo",
