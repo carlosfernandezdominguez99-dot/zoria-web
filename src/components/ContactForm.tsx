@@ -35,6 +35,14 @@ export default function ContactForm() {
     const mensaje = String(data.get("mensaje") || "");
     const interesTexto = seleccionados.length ? seleccionados.join(", ") : "Sin especificar";
 
+    // Campo trampa: las personas no lo ven; si viene relleno es un envío automático y se descarta.
+    if (String(data.get("empresa_web") || "")) {
+      setStatus("success");
+      form.reset();
+      setSeleccionados([]);
+      return;
+    }
+
     if (canal === "whatsapp" && WHATSAPP_NUMBER) {
       const texto = `Hola Zoria, soy ${nombre || "un cliente"}.%0AMe interesa: ${interesTexto}.${
         mensaje ? `%0A${mensaje}` : ""
@@ -137,12 +145,12 @@ export default function ContactForm() {
       <div className={`grid gap-4 ${canal === "email" ? "sm:grid-cols-2" : ""}`}>
         <div>
           <label className={labelClass}>Nombre</label>
-          <input required name="nombre" type="text" className={inputClass} placeholder="Tu nombre" />
+          <input required name="nombre" type="text" maxLength={200} className={inputClass} placeholder="Tu nombre" />
         </div>
         {canal === "email" && (
           <div>
             <label className={labelClass}>Email</label>
-            <input required name="email" type="email" className={inputClass} placeholder="tu@email.com" />
+            <input required name="email" type="email" maxLength={254} className={inputClass} placeholder="tu@email.com" />
           </div>
         )}
       </div>
@@ -150,7 +158,7 @@ export default function ContactForm() {
       {canal === "email" && (
         <div>
           <label className={labelClass}>Teléfono (opcional)</label>
-          <input name="telefono" type="tel" className={inputClass} placeholder="600 000 000" />
+          <input name="telefono" type="tel" maxLength={40} className={inputClass} placeholder="600 000 000" />
         </div>
       )}
 
@@ -194,7 +202,14 @@ export default function ContactForm() {
 
       <div>
         <label className={labelClass}>Cuéntanos brevemente qué necesitas</label>
-        <textarea name="mensaje" rows={3} className={inputClass} placeholder="Opcional" />
+        <textarea name="mensaje" rows={3} maxLength={4000} className={inputClass} placeholder="Opcional" />
+      </div>
+
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label>
+          No rellenar
+          <input name="empresa_web" type="text" tabIndex={-1} autoComplete="off" />
+        </label>
       </div>
 
       <button
@@ -208,6 +223,15 @@ export default function ContactForm() {
             ? "Enviar por WhatsApp"
             : "Enviar solicitud"}
       </button>
+
+      <p className="text-xs leading-relaxed text-graphite-950/50">
+        Usaremos tus datos solo para responder a tu solicitud. Responsable: Carlos Fernández
+        Domínguez (ZORIA). Puedes ejercer tus derechos escribiendo al email indicado en la{" "}
+        <a href="/privacidad" className="font-bold text-graphite-950 underline underline-offset-2">
+          política de privacidad
+        </a>
+        .
+      </p>
 
       {status === "error" && (
         <p className="text-sm font-bold text-red-500">
