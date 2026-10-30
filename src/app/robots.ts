@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: "/pago",
     },
     sitemap: "https://zoriadigital.es/sitemap.xml",
   };
