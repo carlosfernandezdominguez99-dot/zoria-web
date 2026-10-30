@@ -15,9 +15,6 @@ type Datos = {
   pagado: boolean;
 };
 
-const eur = (n: number) =>
-  n.toLocaleString("es-ES", { style: "currency", currency: "EUR" });
-
 function Campo({
   etiqueta,
   valor,
@@ -99,7 +96,7 @@ export default function PagoCliente() {
         Pago por transferencia
       </div>
       <h1 className="mt-2 text-[28px] font-extrabold leading-tight tracking-tight">
-        {datos.servicio || "Renovación"}
+        Número de cuenta
       </h1>
       {datos.pagado ? (
         <p className="mt-3 rounded-xl border border-[#2DE8C9]/40 bg-[#2DE8C9]/10 p-4 text-[14px]">
@@ -107,16 +104,16 @@ export default function PagoCliente() {
         </p>
       ) : (
         <p className="mt-3 text-[14px] leading-relaxed text-[#8EA8A2]">
-          Pulsa «Copiar» en cada dato y pégalo en la app de tu banco al hacer
-          la transferencia.
+          Pulsa «Copiar» y pégalo en la app de tu banco al hacer la
+          transferencia.
         </p>
       )}
-      <div className="mt-6 space-y-3">
-        <Campo etiqueta="Número de cuenta (IBAN)" valor={datos.iban} copiar={datos.iban.replace(/\s+/g, "")} grande />
-        <Campo etiqueta="Importe (IVA incluido)" valor={eur(datos.importe)} copiar={datos.importe.toFixed(2).replace(".", ",")} />
-        <Campo etiqueta="Concepto" valor={datos.concepto} />
-        {datos.titular && <Campo etiqueta="Titular" valor={datos.titular} />}
+      <div className="mt-6">
+        <Campo etiqueta="IBAN" valor={datos.iban} copiar={datos.iban.replace(/\s+/g, "")} grande />
       </div>
+      {datos.titular && (
+        <p className="mt-4 text-[13px] text-[#8EA8A2]">Titular: {datos.titular}</p>
+      )}
     </div>
   );
 }
